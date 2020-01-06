@@ -30,15 +30,15 @@
         </div>
         <div class="content" aria-role="ul">
           <div class="labelItem">
-            <i class="music icon"></i>
+            <i class="computer icon"></i>
             <span class="value">本地和下载</span>
           </div>
           <div class="labelItem">
-            <i class="video icon"></i>
+            <i class="time icon"></i>
             <span class="value">播放历史</span>
           </div>
           <div class="labelItem">
-            <i class="broadcast icon"></i>
+            <i class="listen icon"></i>
             <span class="value">试听列表</span>
           </div>
         </div>
@@ -101,8 +101,8 @@ export default {
         box-sizing: border-box;
         margin: 15px auto;
         padding: 0 5px;
-        font-size: 14px;
         cursor: pointer;
+        font-size: 14px;
         border-radius: 4px;
         .icon {
           display: inline-block;
@@ -120,6 +120,15 @@ export default {
         }
         .broadcast {
           background-image: url('~@/assets/images/broadcast.png');
+        }
+        .computer {
+          background-image: url('~@/assets/images/computer.png');
+        }
+        .time {
+          background-image: url('~@/assets/images/time.png');
+        }
+        .listen {
+          background-image: url('~@/assets/images/listen.png');
         }
         .value {
           color: #ffffff;
