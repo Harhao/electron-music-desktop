@@ -10,6 +10,10 @@
   }
 </script>
 
-<style>
-  /* CSS */
+<style lang="scss">
+@import url('~@/assets/styles/reset.scss');
+#app {
+  width: 100%;
+  height: 100vh;
+}
 </style>

@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'source-beauty';
+    src: url('~@/assets/fonts/NotoSansHans-Regular.otf')
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    -webkit-app-region: drag;
+}
