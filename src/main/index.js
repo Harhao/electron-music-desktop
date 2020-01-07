@@ -50,7 +50,7 @@ app.on('activate', () => {
 ipcMain.on('window-close',() => {
   mainWindow.close()
 })
-ipcMain.on('window-minium',() => {
+ipcMain.on('window-cut',() => {
   mainWindow.minimize()
 
 })
