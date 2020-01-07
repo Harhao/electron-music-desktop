@@ -1,0 +1,24 @@
+$left-side-black:#151414;
+$right-side-black: #1b1a1a;
+$left-side-grey:#696969;
+$right-side-grey: #7d7d7d;
+
+@mixin left_side_color {
+    [data-theme="black"] & {
+        background-color: $left-side-black;
+    }
+
+    [data-theme="grey"] & {
+        background-color: $left-side-grey;
+    }
+}
+
+@mixin right_side_color {
+    [data-theme="black"] & {
+        background-color: $right-side-black;
+    }
+
+    [data-theme="grey"] & {
+        background-color: $right-side-grey;
+    }
+}

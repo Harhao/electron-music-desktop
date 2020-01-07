@@ -1,5 +1,5 @@
 import { app, BrowserWindow, ipcMain  } from 'electron'
-
+import '../renderer/store/index'
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -33,7 +33,7 @@ function createWindow () {
     mainWindow = null
   })
 }
-
+app.commandLine.appendSwitch("--disable-http-cache");
 app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
@@ -52,5 +52,4 @@ ipcMain.on('window-close',() => {
 })
 ipcMain.on('window-cut',() => {
   mainWindow.minimize()
-
 })

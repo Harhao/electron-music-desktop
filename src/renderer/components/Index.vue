@@ -29,6 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/styles/variable.scss';
 #wrapper {
   width: 100%;
   height: 100%;
@@ -37,13 +38,13 @@ export default {
     flex-direction: row;
     width: 100%;
     height: 100%;
-    & .left-side {
+    .left-side {
+      @include left_side_color;
       flex: 1;
-      background-color: #151414;
     }
-    & .right-side {
+    .right-side {
+      @include right_side_color;
       flex: 4;
-      background-color: #1b1a1a;
     }
   }
 }

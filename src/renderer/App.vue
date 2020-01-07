@@ -1,12 +1,17 @@
 <template>
-  <div id="app">
+  <div id="app" :data-theme="theme">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'electron-music-desktop'
+    name: 'electron-music-desktop',
+    computed: {
+      theme() {
+        return this.$store.state.color.primaryColor
+      }
+    }
   }
 </script>
 

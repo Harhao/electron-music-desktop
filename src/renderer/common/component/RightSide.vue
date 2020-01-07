@@ -5,34 +5,78 @@
         <div class="left-tool"></div>
         <div class="right-tool">
           <section class="tool">
-            <span class="icon skin"></span>
+            <el-dropdown class="dropDown" placement="top">
+              <span class="icon skin"></span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>
+                  <el-radio v-model="primaryColor" label="grey"
+                    >土狗灰</el-radio
+                  >
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <el-radio v-model="primaryColor" label="black"
+                    >玄潭黑</el-radio
+                  >
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
             <span class="icon fold"></span>
           </section>
           <span class="line"></span>
           <section class="tool">
-            <span class="icon minium" @click="operateWindow('window-minium')"></span>
+            <span
+              class="icon minium"
+              @click="operateWindow('window-minium')"
+            ></span>
             <span class="icon cut" @click="operateWindow('window-cut')"></span>
-            <span class="icon maxium" @click="operateWindow('window-maxium')"></span>
-            <span class="icon close" @click="operateWindow('window-close')"></span>
+            <span
+              class="icon maxium"
+              @click="operateWindow('window-maxium')"
+            ></span>
+            <span
+              class="icon close"
+              @click="operateWindow('window-close')"
+            ></span>
           </section>
         </div>
       </div>
     </div>
+    <main class="routerView">
+      <router-view></router-view>
+    </main>
+    <!-- 播放控制面板占位 -->
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      primaryColor: null
+    };
+  },
   methods: {
     operateWindow(operateName) {
-      this.$electron.ipcRenderer.send(operateName)
+      this.$electron.ipcRenderer.send(operateName);
+    },
+    initColor() {
+      this.primaryColor = this.$store.state.color.primaryColor;
     }
+  },
+  watch: {
+    primaryColor(val) {
+      this.$store.dispatch('color/setColor',val)
+    }
+  },
+  created() {
+    this.initColor();
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .right-side-wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
   & .tool-bar {
@@ -68,6 +112,13 @@ export default {
           justify-content: space-around;
           align-items: center;
           flex: 1;
+          .dropDown {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 25px;
+            height: 25px;
+          }
           .icon {
             display: inline-block;
             cursor: pointer;
