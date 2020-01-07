@@ -50,3 +50,7 @@ app.on('activate', () => {
 ipcMain.on('window-close',() => {
   mainWindow.close()
 })
+ipcMain.on('window-minium',() => {
+  mainWindow.minimize()
+
+})

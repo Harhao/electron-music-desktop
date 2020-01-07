@@ -10,10 +10,10 @@
           </section>
           <span class="line"></span>
           <section class="tool">
-            <span class="icon minium"></span>
-            <span class="icon cut"></span>
-            <span class="icon maxium"></span>
-            <span class="icon close" @click="closeWindow"></span>
+            <span class="icon minium" @click="operateWindow('window-minium')"></span>
+            <span class="icon cut" @click="operateWindow('window-cut')"></span>
+            <span class="icon maxium" @click="operateWindow('window-maxium')"></span>
+            <span class="icon close" @click="operateWindow('window-close')"></span>
           </section>
         </div>
       </div>
@@ -24,8 +24,8 @@
 <script>
 export default {
   methods: {
-    closeWindow() {
-      this.$electron.ipcRenderer.send("window-close");
+    operateWindow(operateName) {
+      this.$electron.ipcRenderer.send(operateName)
     }
   }
 };
