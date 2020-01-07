@@ -135,9 +135,9 @@ export default {
           font-weight: normal;
           margin-left: 5px;
         }
-      }
-      .labelItem:hover {
-        background-color: #17d28d;
+        &:hover {
+          background-color: #17d28d;
+        }
       }
     }
   }

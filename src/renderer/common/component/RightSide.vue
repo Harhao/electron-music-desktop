@@ -4,9 +4,16 @@
       <div class="tool-wrapper">
         <div class="left-tool"></div>
         <div class="right-tool">
-          <section></section>
-          <section>
-            
+          <section class="tool">
+            <span class="icon skin"></span>
+            <span class="icon fold"></span>
+          </section>
+          <span class="line"></span>
+          <section class="tool">
+            <span class="icon minium"></span>
+            <span class="icon cut"></span>
+            <span class="icon maxium"></span>
+            <span class="icon close"></span>
           </section>
         </div>
       </div>
@@ -36,12 +43,53 @@ export default {};
       width: 95%;
       height: 60px;
       .left-tool{
-        flex: 1;
+        flex: 2;
+      }
+      .line {
+        width: 2px;
+        height: 15px;
+        margin: 0 15px;
+        background-color: #ffffff;
       }
       .right-tool {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         flex: 1;
+        .tool {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          flex:1;
+          .icon {
+            display: inline-block;
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
       }
     }
   }
+}
+.cut {
+  background-image: url('~@/assets/images/cut.png');
+}
+.minium {
+  background-image: url('~@/assets/images/minium.png');
+}
+.maxium {
+  background-image: url('~@/assets/images/maxium.png');
+}
+.close {
+  background-image: url('~@/assets/images/close.png');
+}
+.skin {
+  background-image: url('~@/assets/images/skin.png');
+}
+.fold {
+  background-image: url('~@/assets/images/fold.png');
 }
 </style>
