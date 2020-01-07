@@ -8,7 +8,12 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: require('@/components/Index').default
+      component: require('@/components/Index').default,
+      children: [{
+        path: '/music',
+        name: 'music',
+        component: require('@/components/music').default
+      }]
     },
     {
       path: '*',

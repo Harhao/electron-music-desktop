@@ -33,6 +33,9 @@ function createWindow () {
     mainWindow = null
   })
 }
+function createLoginWindow() {
+
+}
 app.commandLine.appendSwitch("--disable-http-cache");
 app.on('ready', createWindow)
 
@@ -52,4 +55,7 @@ ipcMain.on('window-close',() => {
 })
 ipcMain.on('window-cut',() => {
   mainWindow.minimize()
+})
+ipcMain.on('createLoginWindow',() => {
+  console.log('create a new window')
 })

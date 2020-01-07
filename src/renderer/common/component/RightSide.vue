@@ -5,21 +5,8 @@
         <div class="left-tool"></div>
         <div class="right-tool">
           <section class="tool">
-            <el-dropdown class="dropDown" placement="top">
-              <span class="icon skin"></span>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>
-                  <el-radio v-model="primaryColor" label="grey"
-                    >土狗灰</el-radio
-                  >
-                </el-dropdown-item>
-                <el-dropdown-item>
-                  <el-radio v-model="primaryColor" label="black"
-                    >玄潭黑</el-radio
-                  >
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
+            <span class="login icon" @click="createNewWindow"></span>
+            <skin></skin>
             <span class="icon fold"></span>
           </section>
           <span class="line"></span>
@@ -45,31 +32,25 @@
       <router-view></router-view>
     </main>
     <!-- 播放控制面板占位 -->
+    <player></player>
   </div>
 </template>
 
 <script>
+import skin from "./skin";
+import player from './player';
 export default {
-  data() {
-    return {
-      primaryColor: null
-    };
+  components: {
+    skin,
+    player
   },
   methods: {
+    createNewWindow() {
+      this.$electron.ipcRenderer.send("createLoginWindow");
+    },
     operateWindow(operateName) {
       this.$electron.ipcRenderer.send(operateName);
-    },
-    initColor() {
-      this.primaryColor = this.$store.state.color.primaryColor;
     }
-  },
-  watch: {
-    primaryColor(val) {
-      this.$store.dispatch('color/setColor',val)
-    }
-  },
-  created() {
-    this.initColor();
   }
 };
 </script>
@@ -80,6 +61,8 @@ export default {
   width: 100%;
   height: 100%;
   & .tool-bar {
+    position: absolute;
+    top: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -112,16 +95,10 @@ export default {
           justify-content: space-around;
           align-items: center;
           flex: 1;
-          .dropDown {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 25px;
-            height: 25px;
-          }
           .icon {
             display: inline-block;
             cursor: pointer;
+            outline: none;
             -webkit-app-region: no-drag;
             width: 25px;
             height: 25px;
@@ -145,10 +122,10 @@ export default {
 .close {
   background-image: url("~@/assets/images/close.png");
 }
-.skin {
-  background-image: url("~@/assets/images/skin.png");
-}
 .fold {
   background-image: url("~@/assets/images/fold.png");
+}
+.login {
+  background-image: url("~@/assets/images/login.png");
 }
 </style>
