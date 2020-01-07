@@ -20,7 +20,11 @@ export default {
     LeftSide,
     RightSide
   },
-  methods: {}
+  methods: {
+    data() {
+      return {};
+    }
+  }
 };
 </script>
 
@@ -35,11 +39,11 @@ export default {
     height: 100%;
     & .left-side {
       flex: 1;
-      background-color: #212121;
+      background-color: #151414;
     }
     & .right-side {
       flex: 4;
-      background-color: #272727;
+      background-color: #1b1a1a;
     }
   }
 }

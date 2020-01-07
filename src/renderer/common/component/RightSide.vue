@@ -13,7 +13,7 @@
             <span class="icon minium"></span>
             <span class="icon cut"></span>
             <span class="icon maxium"></span>
-            <span class="icon close"></span>
+            <span class="icon close" @click="closeWindow"></span>
           </section>
         </div>
       </div>
@@ -22,7 +22,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    closeWindow() {
+      this.$electron.ipcRenderer.send("window-close");
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -37,12 +43,13 @@ export default {};
     width: 100%;
     height: 80px;
     line-height: 80px;
+    -webkit-app-region: drag;
     .tool-wrapper {
       display: flex;
       flex-direction: row;
       width: 95%;
       height: 60px;
-      .left-tool{
+      .left-tool {
         flex: 2;
       }
       .line {
@@ -60,10 +67,11 @@ export default {};
           display: flex;
           justify-content: space-around;
           align-items: center;
-          flex:1;
+          flex: 1;
           .icon {
             display: inline-block;
             cursor: pointer;
+            -webkit-app-region: no-drag;
             width: 25px;
             height: 25px;
             background-repeat: no-repeat;
@@ -75,21 +83,21 @@ export default {};
   }
 }
 .cut {
-  background-image: url('~@/assets/images/cut.png');
+  background-image: url("~@/assets/images/cut.png");
 }
 .minium {
-  background-image: url('~@/assets/images/minium.png');
+  background-image: url("~@/assets/images/minium.png");
 }
 .maxium {
-  background-image: url('~@/assets/images/maxium.png');
+  background-image: url("~@/assets/images/maxium.png");
 }
 .close {
-  background-image: url('~@/assets/images/close.png');
+  background-image: url("~@/assets/images/close.png");
 }
 .skin {
-  background-image: url('~@/assets/images/skin.png');
+  background-image: url("~@/assets/images/skin.png");
 }
 .fold {
-  background-image: url('~@/assets/images/fold.png');
+  background-image: url("~@/assets/images/fold.png");
 }
 </style>

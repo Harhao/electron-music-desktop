@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain  } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -21,7 +21,10 @@ function createWindow () {
     width: 1050,
     height: 650,
     frame: false,
-    useContentSize: true
+    useContentSize: true,
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
 
   mainWindow.loadURL(winURL)
@@ -43,4 +46,7 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow()
   }
+})
+ipcMain.on('window-close',() => {
+  mainWindow.close()
 })

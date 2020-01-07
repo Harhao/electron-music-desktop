@@ -1,45 +1,23 @@
 <template>
   <div class="left-side-wrapper">
     <header>
-      <img :src="Logo"></img>
+      <img :src="Logo" />
       <span class="desc">QQ 音乐</span>
     </header>
     <section class="menulist">
-      <div class="menuItem">
+      <div
+        class="menuItem"
+        v-for="(section, index) in routerList"
+        :key="index"
+        :class="section.className ? section.className : ''"
+      >
         <div class="label">
-          <span class="labelText">在线音乐</span>
+          <span class="labelText">{{ section.labelText }}</span>
         </div>
         <div class="content" aria-role="ul">
-          <div class="labelItem">
-            <i class="music icon"></i>
-            <span class="value">音乐馆</span>
-          </div>
-          <div class="labelItem">
-            <i class="video icon"></i>
-            <span class="value">视频</span>
-          </div>
-          <div class="labelItem">
-            <i class="broadcast icon"></i>
-            <span class="value">电台</span>
-          </div>
-        </div>
-      </div>
-      <div class="menuItem top-distance">
-        <div class="label">
-          <span class="labelText">我的音乐</span>
-        </div>
-        <div class="content" aria-role="ul">
-          <div class="labelItem">
-            <i class="computer icon"></i>
-            <span class="value">本地和下载</span>
-          </div>
-          <div class="labelItem">
-            <i class="time icon"></i>
-            <span class="value">播放历史</span>
-          </div>
-          <div class="labelItem">
-            <i class="listen icon"></i>
-            <span class="value">试听列表</span>
+          <div class="labelItem" v-for="item in section.sectionData" :key="item.className" :class="{active: item.className === activeName}" @click="showActiveRoute(item.className)">
+            <i class="icon" :class="item.className"></i>
+            <span class="value">{{ item.label }}</span>
           </div>
         </div>
       </div>
@@ -48,14 +26,58 @@
 </template>
 
 <script>
-import Logo from '@/assets/images/logo.png'
+import Logo from "@/assets/images/logo.png";
 export default {
   data() {
     return {
-      Logo: Logo
+      Logo: Logo,
+      activeName: 'music',
+      routerList: [
+        {
+          className: '',
+          labelText: "在线音乐",
+          sectionData: [
+            {
+              label: "音乐馆",
+              className: "music"
+            },
+            {
+              label: "视频",
+              className: "video"
+            },
+            {
+              label: "电台",
+              className: "broadcast"
+            }
+          ]
+        },
+        {
+          className: "top-distance",
+          labelText: "我的音乐",
+          sectionData: [
+            {
+              label: "本地和下载",
+              className: "computer"
+            },
+            {
+              label: "播放历史",
+              className: "time"
+            },
+            {
+              label: "试听列表",
+              className: "listen"
+            }
+          ]
+        }
+      ]
+    };
+  },
+  methods: {
+    showActiveRoute(className) {
+      this.activeName = className
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -75,11 +97,11 @@ export default {
     .desc {
       color: #ffffff;
       margin-left: 8px;
-      font-family: 'source-beauty';
+      font-family: "source-beauty";
     }
   }
   .menulist {
-    font-family: 'source-beauty-light';
+    font-family: "source-beauty-light";
     & .menuItem {
       margin-top: 10px;
       .label {
@@ -97,7 +119,7 @@ export default {
         display: flex;
         flex-direction: row;
         align-items: center;
-        width: 60%;
+        width: 70%;
         box-sizing: border-box;
         margin: 15px auto;
         padding: 0 5px;
@@ -113,22 +135,22 @@ export default {
           background-position: center;
         }
         .music {
-          background-image: url('~@/assets/images/music.png');
+          background-image: url("~@/assets/images/music.png");
         }
         .video {
-          background-image: url('~@/assets/images/video.png');
+          background-image: url("~@/assets/images/video.png");
         }
         .broadcast {
-          background-image: url('~@/assets/images/broadcast.png');
+          background-image: url("~@/assets/images/broadcast.png");
         }
         .computer {
-          background-image: url('~@/assets/images/computer.png');
+          background-image: url("~@/assets/images/computer.png");
         }
         .time {
-          background-image: url('~@/assets/images/time.png');
+          background-image: url("~@/assets/images/time.png");
         }
         .listen {
-          background-image: url('~@/assets/images/listen.png');
+          background-image: url("~@/assets/images/listen.png");
         }
         .value {
           color: #ffffff;
@@ -136,7 +158,7 @@ export default {
           margin-left: 5px;
         }
         &:hover {
-          background-color: #17d28d;
+          background-color: #525252;
         }
       }
     }
@@ -144,5 +166,8 @@ export default {
 }
 .top-distance {
   margin-top: 50px !important;
+}
+.active {
+  background-color: #17d28d !important;
 }
 </style>
