@@ -1,5 +1,7 @@
 # electron-music-desktop
-!(https://travis-ci.org/Harhao/electron-music-desktop.svg?branch=master)[https://travis-ci.org/Harhao/electron-music-desktop.svg?branch=master]
+
+![https://travis-ci.org/Harhao/electron-music-desktop.svg?branch=master](https://travis-ci.org/Harhao/electron-music-desktop.svg?branch=master)
+
 > a desktop application develope on the electron-vue
 
 #### Build Setup
