@@ -3,7 +3,7 @@
     <span class="icon skin"></span>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item>
-        <el-radio v-model="primaryColor" label="grey">天蓝色</el-radio>
+        <el-radio v-model="primaryColor" label="grey">棕熊灰</el-radio>
       </el-dropdown-item>
       <el-dropdown-item>
         <el-radio v-model="primaryColor" label="black">玄潭黑</el-radio>

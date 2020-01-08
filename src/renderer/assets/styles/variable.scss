@@ -1,7 +1,9 @@
-$left-side-black:#151414;
-$right-side-black: #1b1a1a;
-$left-side-grey:#214579;
-$right-side-grey: #6ec3ff;
+$left-side-black:rgb(23, 23, 24);
+$right-side-black: rgb(30, 30, 32);
+$left-side-grey:rgb(74, 74, 72);
+$right-side-grey: rgb(82, 82, 82);
+$new-window-black: rgb(41, 41, 43);
+$new-window-grey: rgb(80, 80, 80);
 
 @mixin left_side_color {
     [data-theme="black"] & {
@@ -20,5 +22,17 @@ $right-side-grey: #6ec3ff;
 
     [data-theme="grey"] & {
         background-color: $right-side-grey;
+    }
+}
+
+@mixin new_window_color {
+    [data-theme="black"] & {
+        background-color: $new-window-black;
+        border: 1px solid #2d2c2c;
+    }
+
+    [data-theme="grey"] & {
+        background-color: $new-window-grey;
+        border: 1px solid #4c4c4c;
     }
 }
