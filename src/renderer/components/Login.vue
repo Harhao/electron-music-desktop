@@ -21,20 +21,32 @@
             <span class="el-icon-user icon"></span>
             <input
               type="text"
-              placeholder="账号"
+              placeholder="请输入QQ号"
               class="input-item"
               v-model="loginIput.number"
             />
             <span class="el-icon-arrow-down icon"></span>
           </div>
           <div class="form-item">
-            <span class="el-icon-user icon"></span>
+            <span class="el-icon-lock icon"></span>
             <input
-              type="text"
-              placeholder="账号"
+              type="password"
+              placeholder="请输入密码"
               class="input-item"
               v-model="loginIput.number"
             />
+          </div>
+          <div class="auto-login">
+            <el-checkbox v-model="loginIput.autoLogin">自动登录</el-checkbox>
+          </div>
+          <div class="submit">
+            <button class="submit-button">立刻登录</button>
+            <div class="agree-license">
+              <el-checkbox v-model="loginIput.license">同意《用户许可协议》《隐私协议》</el-checkbox>
+            </div>
+            <div class="scan-qq">
+              <span class="scan">QQ扫描登录</span>
+            </div>
           </div>
         </div>
       </div>
@@ -56,7 +68,9 @@ export default {
       loginWaysList: ["QQ登录", "微信登录"],
       loginIput: {
         number: "",
-        password: ""
+        password: "",
+        autoLogin: false,
+        license: true
       }
     };
   },
@@ -121,7 +135,6 @@ export default {
     .login-container {
       display: flex;
       flex-direction: row;
-      // align-items: center;
       width: 80%;
       height: 100%;
       margin: 0 auto;
@@ -137,7 +150,7 @@ export default {
           flex-direction: row;
           align-items: flex-end;
           -webkit-app-region: no-drag;
-          border-bottom: 1px solid #ffffff;
+          border-bottom: 1px solid #444343;
           margin-bottom: 20px;
           .icon {
             font-size: 18px;
@@ -157,6 +170,47 @@ export default {
             -webkit-app-region: no-drag;
             margin-bottom: 2px;
             @include new_window_color;
+          }
+        }
+        .auto-login {
+          text-align: right;
+          margin-bottom: 30px;
+          -webkit-app-region: no-drag;
+        }
+        .submit {
+          width: 90%;
+          height: 40px;
+          margin: 0 auto;
+          -webkit-app-region: no-drag;
+          .submit-button {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #17d28d;
+          } 
+          .agree-license {
+            margin-top: 20px;
+            text-align: center;
+            -webkit-app-region: no-drag;
+            /deep/ .el-checkbox__label{
+              font-size: 12px;
+            }
+          }
+          .scan-qq {
+            width: 100%;
+            font-size: 12px;
+            margin-top: 30px;
+            text-align: right;
+            .scan {
+              cursor: pointer;
+              -webkit-app-region: no-drag;
+            }
           }
         }
       }
