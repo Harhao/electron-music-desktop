@@ -68,7 +68,11 @@ ipcMain.on("createLoginWindow", () => {
     frame: false,
     resizable: false,
     parent: mainWindow,
-    webPreferences: { webSecurity: false }
+    useContentSize: true,
+    webPreferences: { 
+      webSecurity: false, 
+      devTools: true 
+    }
   });
   win.on("close", function() {
     win = null;

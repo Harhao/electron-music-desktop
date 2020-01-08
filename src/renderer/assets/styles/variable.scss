@@ -28,11 +28,9 @@ $new-window-grey: rgb(80, 80, 80);
 @mixin new_window_color {
     [data-theme="black"] & {
         background-color: $new-window-black;
-        border: 1px solid #2d2c2c;
     }
 
     [data-theme="grey"] & {
         background-color: $new-window-grey;
-        border: 1px solid #4c4c4c;
     }
 }
