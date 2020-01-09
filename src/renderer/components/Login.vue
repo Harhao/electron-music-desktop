@@ -15,7 +15,7 @@
       <span class="icon close"></span>
     </div>
     <main class="login-content">
-      <div class="login-QQ-input login-container">
+      <div class="login-QQ-input login-container" v-show="activeIndex === 0">
         <div class="form">
           <div class="form-item">
             <span class="el-icon-user icon"></span>
@@ -33,7 +33,7 @@
               type="password"
               placeholder="请输入密码"
               class="input-item"
-              v-model="loginIput.number"
+              v-model="loginIput.password"
             />
           </div>
           <div class="auto-login">
@@ -42,28 +42,50 @@
           <div class="submit">
             <button class="submit-button">立刻登录</button>
             <div class="agree-license">
-              <el-checkbox v-model="loginIput.license">同意《用户许可协议》《隐私协议》</el-checkbox>
+              <el-checkbox v-model="loginIput.license"
+                >同意《用户许可协议》《隐私协议》</el-checkbox
+              >
             </div>
             <div class="scan-qq">
-              <span class="scan">QQ扫描登录</span>
+              <span class="scan" @click="activeIndex = 2">QQ扫描登录</span>
             </div>
           </div>
         </div>
       </div>
-      <!-- <div class="login-QQ-scan login-container">
-
+      <div class="login-QQ-scan login-container" v-show="activeIndex === 2">
+        <div class="qr-code">
+          <img :src="qrCode" />
+        </div>
+        <div class="scan-tips">
+          <div class="tips-first">请使用手机QQ扫描二维码登录</div>
+          <div class="tips-second">手机QQ扫码登录目前不支持自动登录</div>
+          <div class="operate">
+            <span class="login-password" @click="activeIndex = 0">账号密码登录</span>
+          </div>
+        </div>
       </div>
-      <div class="login-wechat-scan login-container">
-
-      </div> -->
+      <div
+        class="login-wechat-scan login-container"
+        v-show="activeIndex === 1"
+      >
+        <div class="qr-code">
+          <img :src="qrCode" />
+        </div>
+        <div class="scan-tips">
+          <div class="tips-first">请使用微信扫描二维码登录</div>
+          <div class="tips-second">QQ与微信账号的音乐资产、付费特权不互通</div>
+        </div>
+      </div>
     </main>
   </div>
 </template>
 
 <script>
+import qrCode from "@/assets/images/qr-code.png";
 export default {
   data() {
     return {
+      qrCode: qrCode,
       activeIndex: 0,
       loginWaysList: ["QQ登录", "微信登录"],
       loginIput: {
@@ -134,7 +156,7 @@ export default {
     flex: 1;
     .login-container {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       width: 80%;
       height: 100%;
       margin: 0 auto;
@@ -172,6 +194,9 @@ export default {
             @include new_window_color;
           }
         }
+        /deep/ .el-checkbox__label {
+          font-size: 12px;
+        }
         .auto-login {
           text-align: right;
           margin-bottom: 30px;
@@ -193,14 +218,11 @@ export default {
             font-size: 14px;
             cursor: pointer;
             background-color: #17d28d;
-          } 
+          }
           .agree-license {
             margin-top: 20px;
             text-align: center;
             -webkit-app-region: no-drag;
-            /deep/ .el-checkbox__label{
-              font-size: 12px;
-            }
           }
           .scan-qq {
             width: 100%;
@@ -209,10 +231,52 @@ export default {
             text-align: right;
             .scan {
               cursor: pointer;
+              letter-spacing: 3px;
               -webkit-app-region: no-drag;
+              &:hover {
+                color: #17d28d;
+              }
             }
           }
         }
+      }
+      .qr-code {
+        width: 100%;
+        margin-top: 50px;
+        text-align: center;
+        & > img {
+          width: 60%;
+          height: auto;
+          border-radius: 5px;
+        }
+      }
+      .scan-tips {
+        width: 100%;
+        margin-top: 20px;
+        .tips-first,
+        .tips-second {
+          font-size: 12px;
+          margin-top: 15px;
+          color: #a29c9c;
+          text-align: center;
+        }
+        .operate {
+          width: 100%;
+          text-align: right;
+          margin-top: 40px;
+          .login-password {
+            color: #a29c9c;
+            font-size: 12px;
+            cursor: pointer;
+            -webkit-app-region: no-drag;
+            &:hover {
+              color: #17d28d;
+            }
+          }
+        }
+      }
+      .operate {
+        width: 100%;
       }
     }
   }
