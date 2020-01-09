@@ -2,12 +2,20 @@
   <div class="right-side-wrapper">
     <div class="tool-bar">
       <div class="tool-wrapper">
-        <div class="left-tool"></div>
+        <div class="left-tool">
+          <section class="tool">
+            <span class="icon el-icon-arrow-left"></span>
+            <span class="icon el-icon-arrow-right"></span>
+            <input type="text" class="search-word" placeholder="搜索音乐"/>
+            <span class="icon el-icon-cpu"></span>
+          </section>
+          <section class="tool"></section>
+        </div>
         <div class="right-tool">
           <section class="tool">
             <span class="login icon" @click="createNewWindow"></span>
             <skin></skin>
-            <span class="icon fold"></span>
+            <drop-menu></drop-menu>
           </section>
           <span class="line"></span>
           <section class="tool">
@@ -38,10 +46,12 @@
 
 <script>
 import skin from "./skin";
-import player from './player';
+import dropMenu from "./menu";
+import player from "./player";
 export default {
   components: {
     skin,
+    dropMenu,
     player
   },
   methods: {
@@ -56,6 +66,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/assets/styles/variable.scss';
 .right-side-wrapper {
   position: relative;
   width: 100%;
@@ -78,6 +89,9 @@ export default {
       height: 60px;
       .left-tool {
         flex: 2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
       }
       .line {
         width: 2px;
@@ -90,21 +104,40 @@ export default {
         flex-direction: row;
         align-items: center;
         flex: 1;
-        .tool {
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          flex: 1;
-          .icon {
-            display: inline-block;
-            cursor: pointer;
-            outline: none;
-            -webkit-app-region: no-drag;
-            width: 25px;
-            height: 25px;
-            background-repeat: no-repeat;
-            background-position: center;
-          }
+      }
+      .tool {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        flex: 1;
+        .search-word {
+          display: inline-block;
+          box-sizing: border-box;
+          height: 30px;
+          border: none;
+          outline: none;
+          border-radius: 20px;
+          padding-left: 30px;
+          margin-right: 10px;
+          caret-color: #ffffff;
+          color: #ffffff;
+          background: url('~@/assets/images/search.png') no-repeat 7px center;
+          -webkit-app-region: no-drag;
+          @include new_window_color;
+          
+        }
+        .icon {
+          display: inline-block;
+          cursor: pointer;
+          outline: none;
+          -webkit-app-region: no-drag;
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
+          color: #ffffff;
+          background-repeat: no-repeat;
+          background-position: center;
         }
       }
     }
@@ -121,9 +154,6 @@ export default {
 }
 .close {
   background-image: url("~@/assets/images/close.png");
-}
-.fold {
-  background-image: url("~@/assets/images/fold.png");
 }
 .login {
   background-image: url("~@/assets/images/login.png");
