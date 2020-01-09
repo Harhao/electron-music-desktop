@@ -1,6 +1,6 @@
 <template>
   <div id="music-wrapper">
-    <tab :data="tabData"/>
+    <tab :data="tabData" ref="tabWrapper"/>
   </div>
 </template>
 

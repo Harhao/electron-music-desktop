@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <main class="routerView">
+    <main class="routerView" id="routerView">
       <transition name="slide-fade">
         <router-view></router-view>
       </transition>
@@ -62,7 +62,19 @@ export default {
     },
     operateWindow(operateName) {
       this.$electron.ipcRenderer.send(operateName);
+    },
+    addScrollEvent() {
+      const target = document.querySelector('#routerView');
+      target.addEventListener('scroll',(e) =>{
+        console.log(e.target.scrollTop)
+        if(e.target.scrollTop >= 100) {
+          console.log(this.$refs)
+        }
+      },false);
     }
+  },
+  mounted() {
+    this.addScrollEvent()
   }
 };
 </script>

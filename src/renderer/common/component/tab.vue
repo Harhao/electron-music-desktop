@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-wrapper" ref="tabWrapper">
+  <div class="tab-wrapper">
     <header>
       <h3 class="title">{{ data.title }}</h3>
       <div class="tab-list">
@@ -42,11 +42,6 @@ export default {
   methods: {
     setActiveName() {
       this.activeName = this.data.list.length && this.data.list[0]["name"];
-    },
-    addScrollEvent() {
-      this.$refs.tabWrapper.addEventListener("scroll", event => {
-        console.log(event.target);
-      },false);
     }
   },
   watch: {
@@ -56,9 +51,6 @@ export default {
   },
   created() {
     this.setActiveName();
-  },
-  mounted() {
-    this.addScrollEvent();
   }
 };
 </script>
