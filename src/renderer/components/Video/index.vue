@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "video",
+  name: "player:video",
   methods: {
     data() {
       return {};

@@ -20,8 +20,6 @@
             v-for="item in section.sectionData"
             :key="item.className"
             :to="item.url"
-            :class="{ active: item.className === activeName }"
-            @click="showActiveRoute(item.className)"
             tag="div"
           >
             <i class="icon" :class="item.className"></i>
@@ -86,11 +84,7 @@ export default {
       ]
     };
   },
-  methods: {
-    showActiveRoute(className) {
-      this.activeName = className;
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -184,7 +178,7 @@ export default {
 .top-distance {
   margin-top: 50px !important;
 }
-.active {
+.router-link-active {
   background-color: #17d28d !important;
 }
 </style>

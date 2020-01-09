@@ -69,6 +69,7 @@ ipcMain.on("createLoginWindow", () => {
     show: false,
     resizable: false,
     modal: true,
+    center: true,
     parent: mainWindow,
     useContentSize: true,
     webPreferences: { 

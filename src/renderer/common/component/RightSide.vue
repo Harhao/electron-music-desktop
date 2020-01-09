@@ -36,8 +36,10 @@
         </div>
       </div>
     </div>
-    <main class="routerView" id="routerView">
-      <router-view></router-view>
+    <main class="routerView">
+      <transition name="slide-fade">
+        <router-view></router-view>
+      </transition>
     </main>
     <!-- 播放控制面板占位 -->
     <player></player>
@@ -145,9 +147,10 @@ export default {
     }
   }
   .routerView {
-    padding: 80px 0;
+    padding: 80px 30px;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
     overflow-y: scroll;
     -webkit-drag-region: no-drag;
   }
@@ -166,6 +169,14 @@ export default {
 }
 .login {
   background-image: url("~@/assets/images/login.png");
+}
+
+.slide-fade-enter-active {
+  transition: all .5s ease;
+}
+.slide-fade-enter {
+  transform: translateX(10px);
+  opacity: 0;
 }
 ::-webkit-scrollbar {
   width: 10px;
