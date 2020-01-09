@@ -37,15 +37,9 @@ export default {
       activeName: null
     };
   },
-  // methods: {
-  //   handleClick(tab, event) {
-  //     // console.log(`/music/${tab.name}`)
-  //     this.$router.push({ name: tab.name });
-  //   }
-  // },
   watch: {
     activeName(val) {
-      this.$router.push({ path: `/${val}` });
+      this.$router.push({ name: val });
     }
   },
   created() {

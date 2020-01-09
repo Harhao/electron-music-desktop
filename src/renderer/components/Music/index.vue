@@ -18,33 +18,27 @@ export default {
         list: [
           {
             label: "精选",
-            name: "featured",
-            router: "/featured"
+            name: "featured"
           },
           {
             label: "排行",
-            name: "rank",
-            router: "/rank"
+            name: "rank"
           },
           {
             label: "歌手",
-            name: "singer",
-            router: "/singer"
+            name: "singer"
           },
           {
             label: "分类歌单",
-            name: "category",
-            router: "/category"
+            name: "category"
           },
           {
             label: "数字专辑",
-            name: "album",
-            router: "/album"
+            name: "album"
           },
           {
             label: "有声节目",
-            name: "sound ",
-            router: "/sound "
+            name: "sound"
           }
         ]
       }

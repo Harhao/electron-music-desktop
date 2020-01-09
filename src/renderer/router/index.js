@@ -16,13 +16,46 @@ export default new Router({
       children: [
         {
           path: "/music",
-          name: "player:music",
+          name: "music",
           component: require("@/components/Music").default,
-          children:[{
-            path: '/featured',
-            name: 'featured',
-            component: require("@/components/Music/component/featured.vue").default
-          }]
+          children: [
+            {
+              path: "featured",
+              name: "featured",
+              component: require("@/components/Music/component/featured.vue")
+                .default
+            },
+            {
+              path: "rank",
+              name: "rank",
+              component: require("@/components/Music/component/rank.vue")
+                .default
+            },
+            {
+              path: "singer",
+              name: "singer",
+              component: require("@/components/Music/component/singer.vue")
+                .default
+            },
+            {
+              path: "category",
+              name: "category",
+              component: require("@/components/Music/component/category.vue")
+                .default
+            },
+            {
+              path: "album",
+              name: "album",
+              component: require("@/components/Music/component/album.vue")
+                .default
+            },
+            {
+              path: "sound",
+              name: "sound",
+              component: require("@/components/Music/component/sound.vue")
+                .default
+            }
+          ]
         },
         {
           path: "/video",
