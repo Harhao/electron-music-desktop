@@ -12,7 +12,7 @@
           {{ item }}
         </div>
       </div>
-      <span class="icon close"></span>
+      <span class="icon close" @click="closeModal"></span>
     </div>
     <main class="login-content">
       <div class="login-QQ-input login-container" v-show="activeIndex === 0">
@@ -99,6 +99,9 @@ export default {
   methods: {
     showLoginPane(index) {
       this.activeIndex = index;
+    },
+    closeModal() {
+      this.$electron.ipcRenderer.send('closeLoginWindow')
     }
   }
 };
@@ -218,6 +221,9 @@ export default {
             font-size: 14px;
             cursor: pointer;
             background-color: #17d28d;
+            &:active {
+              filter: brightness(85%);
+            }
           }
           .agree-license {
             margin-top: 20px;

@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== "development") {
     .replace(/\\/g, "\\\\");
 }
 
-let mainWindow;
+let mainWindow,subWindow
 const winURL =
   process.env.NODE_ENV === "development"
     ? `http://localhost:9080`
@@ -62,20 +62,28 @@ ipcMain.on("createLoginWindow", () => {
     process.env.NODE_ENV === "development"
       ? "http://localhost:9080/#/login"
       : `file://${__dirname}/index.html#login`;
-  let win = new BrowserWindow({
+  subWindow = new BrowserWindow({
     width: 320,
     height: 420,
     frame: false,
+    show: false,
     resizable: false,
+    modal: true,
     parent: mainWindow,
     useContentSize: true,
     webPreferences: { 
       webSecurity: false, 
-      devTools: true 
+      devTools: false 
     }
   });
-  win.on("close", function() {
-    win = null;
+  subWindow.on('ready-to-show', () => {
+    subWindow.show()
+  })
+  subWindow.on("close", function() {
+    subWindow = null;
   });
-  win.loadURL(modalPath);
+  subWindow.loadURL(modalPath);
 });
+ipcMain.on('closeLoginWindow',() => {
+  subWindow.close()
+})
