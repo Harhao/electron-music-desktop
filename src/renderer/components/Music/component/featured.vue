@@ -1,6 +1,10 @@
 <template>
   <div class="featured">
-      123456
+    <p>123456</p>
+    <p>123456</p>
+    <p>123456</p>
+    <p>123456</p>
+    <p>123456</p>
   </div>
 </template>
 

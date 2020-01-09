@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== "development") {
     .replace(/\\/g, "\\\\");
 }
 
-let mainWindow,subWindow
+let mainWindow, subWindow;
 const winURL =
   process.env.NODE_ENV === "development"
     ? `http://localhost:9080/#/music`
@@ -26,7 +26,8 @@ function createWindow() {
     frame: false,
     useContentSize: true,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      webSecurity: false
     }
   });
 
@@ -72,19 +73,19 @@ ipcMain.on("createLoginWindow", () => {
     center: true,
     parent: mainWindow,
     useContentSize: true,
-    webPreferences: { 
-      webSecurity: false, 
-      devTools: false 
+    webPreferences: {
+      webSecurity: false,
+      devTools: false
     }
   });
-  subWindow.on('ready-to-show', () => {
-    subWindow.show()
-  })
+  subWindow.on("ready-to-show", () => {
+    subWindow.show();
+  });
   subWindow.on("close", function() {
     subWindow = null;
   });
   subWindow.loadURL(modalPath);
 });
-ipcMain.on('closeLoginWindow',() => {
-  subWindow.close()
-})
+ipcMain.on("closeLoginWindow", () => {
+  subWindow.close();
+});

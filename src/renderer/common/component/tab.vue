@@ -1,17 +1,19 @@
 <template>
-  <div class="tab-wrapper">
-    <h3 class="title">{{ data.title }}</h3>
-    <div class="tab-list">
-      <el-tabs v-model="activeName">
-        <el-tab-pane
-          v-for="item in data.list"
-          :key="item.name"
-          :label="item.label"
-          :name="item.name"
-        >
-        </el-tab-pane>
-      </el-tabs>
-    </div>
+  <div class="tab-wrapper" ref="tabWrapper">
+    <header>
+      <h3 class="title">{{ data.title }}</h3>
+      <div class="tab-list">
+        <el-tabs v-model="activeName">
+          <el-tab-pane
+            v-for="item in data.list"
+            :key="item.name"
+            :label="item.label"
+            :name="item.name"
+          >
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+    </header>
     <main class="tab-view">
       <router-view></router-view>
     </main>
@@ -37,13 +39,26 @@ export default {
       activeName: null
     };
   },
+  methods: {
+    setActiveName() {
+      this.activeName = this.data.list.length && this.data.list[0]["name"];
+    },
+    addScrollEvent() {
+      this.$refs.tabWrapper.addEventListener("scroll", event => {
+        console.log(event.target);
+      },false);
+    }
+  },
   watch: {
     activeName(val) {
       this.$router.push({ name: val });
     }
   },
   created() {
-    this.activeName = this.data.list.length && this.data.list[0]["name"];
+    this.setActiveName();
+  },
+  mounted() {
+    this.addScrollEvent();
   }
 };
 </script>
