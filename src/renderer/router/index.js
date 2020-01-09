@@ -13,11 +13,15 @@ export default new Router({
         path: '/music',
         name: 'music',
         component: require('@/components/music').default
+      },{
+        path: '/video',
+        name: 'video',
+        component: require('@/components/video').default
       }]
     },
     {
       path: '*',
-      redirect: '/'
+      redirect: '/music'
     },
     {
       path: '/login',

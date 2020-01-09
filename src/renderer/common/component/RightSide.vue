@@ -6,7 +6,7 @@
           <section class="tool">
             <span class="icon el-icon-arrow-left"></span>
             <span class="icon el-icon-arrow-right"></span>
-            <input type="text" class="search-word" placeholder="搜索音乐"/>
+            <input type="text" class="search-word" placeholder="搜索音乐" />
             <span class="icon el-icon-cpu"></span>
           </section>
           <section class="tool"></section>
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <main class="routerView">
+    <main class="routerView" id="routerView">
       <router-view></router-view>
     </main>
     <!-- 播放控制面板占位 -->
@@ -66,9 +66,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/assets/styles/variable.scss';
+@import "~@/assets/styles/variable.scss";
 .right-side-wrapper {
   position: relative;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
   & .tool-bar {
@@ -81,7 +82,9 @@ export default {
     width: 100%;
     height: 80px;
     line-height: 80px;
+    z-index: 99;
     -webkit-app-region: drag;
+    @include right_side_color;
     .tool-wrapper {
       display: flex;
       flex-direction: row;
@@ -122,10 +125,9 @@ export default {
           margin-right: 10px;
           caret-color: #ffffff;
           color: #ffffff;
-          background: url('~@/assets/images/search.png') no-repeat 7px center;
+          background: url("~@/assets/images/search.png") no-repeat 7px center;
           -webkit-app-region: no-drag;
           @include new_window_color;
-          
         }
         .icon {
           display: inline-block;
@@ -142,6 +144,13 @@ export default {
       }
     }
   }
+  .routerView {
+    padding: 80px 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-drag-region: no-drag;
+  }
 }
 .cut {
   background-image: url("~@/assets/images/cut.png");
@@ -157,5 +166,20 @@ export default {
 }
 .login {
   background-image: url("~@/assets/images/login.png");
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  @include right_side_color
+}
+::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
 }
 </style>

@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== "development") {
 let mainWindow,subWindow
 const winURL =
   process.env.NODE_ENV === "development"
-    ? `http://localhost:9080`
+    ? `http://localhost:9080/#/music`
     : `file://${__dirname}/index.html`;
 
 function createWindow() {

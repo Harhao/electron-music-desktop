@@ -15,10 +15,18 @@
           <span class="labelText">{{ section.labelText }}</span>
         </div>
         <div class="content" aria-role="ul">
-          <div class="labelItem" v-for="item in section.sectionData" :key="item.className" :class="{active: item.className === activeName}" @click="showActiveRoute(item.className)">
+          <router-link
+            class="labelItem"
+            v-for="item in section.sectionData"
+            :key="item.className"
+            :to="item.url"
+            :class="{ active: item.className === activeName }"
+            @click="showActiveRoute(item.className)"
+            tag="div"
+          >
             <i class="icon" :class="item.className"></i>
             <span class="value">{{ item.label }}</span>
-          </div>
+          </router-link>
         </div>
       </div>
     </section>
@@ -31,23 +39,26 @@ export default {
   data() {
     return {
       Logo: Logo,
-      activeName: 'music',
+      activeName: "music",
       routerList: [
         {
-          className: '',
+          className: "",
           labelText: "在线音乐",
           sectionData: [
             {
               label: "音乐馆",
-              className: "music"
+              className: "music",
+              url: "/music"
             },
             {
               label: "视频",
-              className: "video"
+              className: "video",
+              url: "/video"
             },
             {
               label: "电台",
-              className: "broadcast"
+              className: "broadcast",
+              url: "/broadcast"
             }
           ]
         },
@@ -57,15 +68,18 @@ export default {
           sectionData: [
             {
               label: "本地和下载",
-              className: "computer"
+              className: "computer",
+              url: "/download"
             },
             {
               label: "播放历史",
-              className: "time"
+              className: "time",
+              url: "/history"
             },
             {
               label: "试听列表",
-              className: "listen"
+              className: "listen",
+              url: "/listen"
             }
           ]
         }
@@ -74,7 +88,7 @@ export default {
   },
   methods: {
     showActiveRoute(className) {
-      this.activeName = className
+      this.activeName = className;
     }
   }
 };
@@ -94,6 +108,9 @@ export default {
     height: 50px;
     font-size: 18px;
     padding: 10px 0;
+    img {
+      -webkit-user-select: none;
+    }
     .desc {
       color: #ffffff;
       margin-left: 8px;
