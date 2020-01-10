@@ -88,7 +88,7 @@ export default {
 .fixed {
   position:sticky;
   top: 0px;
-  z-index: 9999;
+  z-index: 999;
   @include right_side_color;
 }
 </style>
