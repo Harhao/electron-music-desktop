@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import LeftSide from "@/common/component/LeftSide.vue";
-import RightSide from "@/common/component/RightSide.vue";
+import LeftSide from "@/layout/LeftSide.vue";
+import RightSide from "@/layout/RightSide.vue";
 export default {
   name: "index",
   components: {

@@ -1,34 +1,36 @@
 <template>
   <div class="video-wrapper">
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
-      <p>123456121313</p>
+    <tab :data="tabData" ref="tabWrapper" />
   </div>
 </template>
 
 <script>
+import tab from "@/common/tab.vue";
 export default {
   name: "player:video",
-  methods: {
-    data() {
-      return {};
-    }
+  components: {
+    tab
+  },
+  data() {
+    return {
+      tabData: {
+        title: "视频",
+        list: [
+          {
+            label: "推荐",
+            name: "recommend"
+          },
+          {
+            label: "排行榜",
+            name: "leaderboard"
+          },
+          {
+            label: "视频库",
+            name: "videolibrary"
+          }
+        ]
+      }
+    };
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

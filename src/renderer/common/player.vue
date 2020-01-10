@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../assets/styles/variable.scss';
+@import '../assets/styles/variable.scss';
 .player {
     position: absolute;
     width: 100%;

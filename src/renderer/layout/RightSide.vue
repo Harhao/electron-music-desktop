@@ -4,8 +4,14 @@
       <div class="tool-wrapper">
         <div class="left-tool">
           <section class="tool">
-            <span class="icon el-icon-arrow-left"></span>
-            <span class="icon el-icon-arrow-right"></span>
+            <span
+              class="icon el-icon-arrow-left"
+              @click="$router.go(-1)"
+            ></span>
+            <span
+              class="icon el-icon-arrow-right"
+              @click="$router.go(1)"
+            ></span>
             <input type="text" class="search-word" placeholder="搜索音乐" />
             <span class="icon el-icon-cpu"></span>
           </section>
@@ -47,9 +53,9 @@
 </template>
 
 <script>
-import skin from "./skin";
-import dropMenu from "./menu";
-import player from "./player";
+import skin from "@/common/skin";
+import dropMenu from "@/common/menu";
+import player from "@/common/player";
 export default {
   components: {
     skin,
@@ -62,19 +68,7 @@ export default {
     },
     operateWindow(operateName) {
       this.$electron.ipcRenderer.send(operateName);
-    },
-    addScrollEvent() {
-      const target = document.querySelector('#routerView');
-      target.addEventListener('scroll',(e) =>{
-        console.log(e.target.scrollTop)
-        if(e.target.scrollTop >= 100) {
-          console.log(this.$refs)
-        }
-      },false);
     }
-  },
-  mounted() {
-    this.addScrollEvent()
   }
 };
 </script>
@@ -184,7 +178,7 @@ export default {
 }
 
 .slide-fade-enter-active {
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 .slide-fade-enter {
   transform: translateX(10px);
@@ -193,7 +187,7 @@ export default {
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
-  @include right_side_color
+  @include right_side_color;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #333;

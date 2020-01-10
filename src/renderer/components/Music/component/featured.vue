@@ -1,22 +1,20 @@
 <template>
   <div class="featured">
-    <p>123456</p>
-    <p>123456</p>
-    <p>123456</p>
-    <p>123456</p>
-    <p>123456</p>
+    <slider></slider>
   </div>
 </template>
 
 <script>
+import slider from "@/common/slider.vue";
 export default {
-
-}
+  components: {
+    slider
+  }
+};
 </script>
 
 <style>
 .featured {
   color: #ffffff;
-  font-size: 100px;
 }
 </style>

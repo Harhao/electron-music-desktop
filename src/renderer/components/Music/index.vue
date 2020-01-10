@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import tab from "@/common/component/tab.vue";
+import tab from "@/common/tab.vue";
 export default {
   name: "player:music",
   components: {
@@ -46,5 +46,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

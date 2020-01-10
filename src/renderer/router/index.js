@@ -60,7 +60,27 @@ export default new Router({
         {
           path: "/video",
           name: "player:video",
-          component: require("@/components/Video/index.vue").default
+          component: require("@/components/Video/index.vue").default,
+          children: [
+            {
+              path: "recommend",
+              name: "recommend",
+              component: require("@/components/Video/component/recommend.vue")
+                .default
+            },
+            {
+              path: "leaderboard",
+              name: "leaderboard",
+              component: require("@/components/Video/component/leaderboard.vue")
+                .default
+            },
+            {
+              path: "videolibrary",
+              name: "videolibrary",
+              component: require("@/components/Video/component/videolibrary.vue")
+                .default
+            }
+          ]
         },
         {
           path: "/broadcast",
