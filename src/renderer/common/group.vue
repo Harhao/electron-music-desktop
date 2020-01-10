@@ -36,9 +36,8 @@ export default {
 .group-wrapper {
   width: 100%;
   box-sizing: border-box;
-  height: auto;
+  height: 300px;
   font-family: 'source-beauty';
-  margin-top: 50px;
   .header {
     width: 100%;
     box-sizing: border-box;
@@ -62,6 +61,10 @@ export default {
       cursor: pointer;
       -webkit-app-region: no-drag;
     }
+  }
+  .group-container {
+    width: 100%;
+    height: auto;
   }
 }
 </style>

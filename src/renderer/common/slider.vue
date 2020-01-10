@@ -3,7 +3,6 @@
     :interval="4000"
     type="card"
     height="200px"
-    indicator-position="none"
   >
     <el-carousel-item v-for="(item,index) in image_list" :key="index">
       <img class="medium" :src="item.url" />
