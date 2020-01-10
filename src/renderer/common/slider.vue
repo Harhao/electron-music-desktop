@@ -1,29 +1,42 @@
 <template>
-  <el-carousel :interval="4000" type="card" height="200px">
-    <el-carousel-item v-for="item in 6" :key="item">
-      <h3 class="medium">{{ item }}</h3>
+  <el-carousel
+    :interval="4000"
+    type="card"
+    height="200px"
+    indicator-position="none"
+  >
+    <el-carousel-item v-for="item in image_list" :key="item">
+      <img class="medium" :src="item.url" />
     </el-carousel-item>
   </el-carousel>
 </template>
 
 <script>
+import slider from "@/assets/images/slider.jpg";
 export default {
-  name: "slider"
+  name: "slider",
+  data() {
+    return {
+      image_list: [
+        {
+          url: slider
+        },
+        {
+          url: slider
+        },
+        {
+          url: slider
+        }
+      ]
+    };
+  }
 };
 </script>
 
 <style scoped lang="scss">
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 14px;
-  opacity: 0.75;
+.el-carousel__item img {
+  height: 100%;
   line-height: 200px;
   margin: 0;
-}
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
 }
 </style>

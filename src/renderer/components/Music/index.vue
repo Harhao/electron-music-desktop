@@ -7,7 +7,7 @@
 <script>
 import tab from "@/common/tab.vue";
 export default {
-  name: "player:music",
+  name: "player_music",
   components: {
     tab
   },

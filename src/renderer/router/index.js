@@ -59,7 +59,7 @@ export default new Router({
         },
         {
           path: "/video",
-          name: "player:video",
+          name: "video",
           component: require("@/components/Video/index.vue").default,
           children: [
             {
@@ -84,22 +84,22 @@ export default new Router({
         },
         {
           path: "/broadcast",
-          name: "player:broacast",
+          name: "broacast",
           component: require("@/components/Broadcast/index.vue").default
         },
         {
           path: "/download",
-          name: "player:download",
+          name: "download",
           component: require("@/components/Download/index.vue").default
         },
         {
           path: "/history",
-          name: "player:history",
+          name: "history",
           component: require("@/components/History/index.vue").default
         },
         {
           path: "/listen",
-          name: "player:listen",
+          name: "listen",
           component: require("@/components/Listen/index.vue").default
         }
       ]
