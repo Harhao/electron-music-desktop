@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="card-container"
-    :style="{ width: width + 'px', height: height + 'px' }"
-  >
-    <div class="card">
+  <div class="rank-card" :style="{ height: height + 'px' }">
+    <div class="card" :style="{ width: width + 'px', height: height + 'px' }">
       <img :src="data.url" />
       <div class="listen-count" v-show="showIcon">
         <span class="icon"></span>
@@ -13,21 +10,22 @@
         <i class="video-play"></i>
       </div>
     </div>
-    <div class="desc">
-      <div class="title">{{ data.title }}</div>
-      <div class="author">{{ data.author }}</div>
-      <div class="time">{{ data.time }}</div>
+    <div class="rank-list">
+      <div class="rank-title">流行指数榜</div>
+      <div class="song-list">
+        <div class="song">1. 下山-要不要买菜</div>
+        <div class="song">2. 下山-要不要买菜</div>
+        <div class="song">3. 下山-要不要买菜</div>
+      </div>
     </div>
   </div>
 </template>
-
 <script>
 import demo from "@/assets/images/demo.jpg";
 export default {
-  name: "card",
+  name: "rank-card",
   data() {
-    return {
-    };
+    return {};
   },
   props: {
     width: {
@@ -59,15 +57,28 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.card-container {
+@import "../assets/styles/variable.scss";
+.rank-card {
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 8px;
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+  @include new_window_color;
+  font-family: "source-beauty";
   color: #fff;
+  &:hover {
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+  }
   .card {
     position: relative;
     width: 100%;
     height: 100%;
     border-radius: 8px;
     background-color: #ffffff;
-    margin-top: 30px;
     cursor: pointer;
     overflow: hidden;
     transform: translateY(0px);
@@ -98,10 +109,6 @@ export default {
         margin-left: 5px;
       }
     }
-    &:hover {
-      transform: translateY(-10px);
-      transition: all 0.3s ease-in-out;
-    }
     &:hover .icon-container {
       position: absolute;
       left: 0;
@@ -125,19 +132,22 @@ export default {
       display: none;
     }
   }
-  .desc {
-    font-size: 14px;
-    margin-top: 10px;
-    .title {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+  .rank-list {
+    flex: 1;
+    height: 100%;
+    padding-left: 10px;
+    box-sizing: border-box;
+    .rank-title {
+      width: 100%;
+      height: 50px;
+      font-size: 20px;
+      line-height: 50px;
     }
-    .author {
-      color: #dddddd;
-    }
-    .time {
-      font-size: 12px;
+    .song-list {
+      .song {
+        font-size: 14px;
+        margin-top: 8px;
+      }
     }
   }
 }
