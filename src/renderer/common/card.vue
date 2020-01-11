@@ -13,7 +13,7 @@
         <i class="video-play"></i>
       </div>
     </div>
-    <div class="desc">
+    <div class="desc" v-if="showDesc">
       <div class="title">{{ data.title }}</div>
       <div class="author">{{ data.author }}</div>
       <div class="time">{{ data.time }}</div>
@@ -31,14 +31,18 @@ export default {
   },
   props: {
     width: {
-      type: Number,
+      type: Number|String,
       default: 160
     },
     height: {
-      type: Number,
+      type: Number|String,
       default: 160
     },
     showIcon: {
+      type: Boolean,
+      default: false
+    },
+    showDesc: {
       type: Boolean,
       default: false
     },
@@ -61,13 +65,13 @@ export default {
 <style scoped lang="scss">
 .card-container {
   color: #fff;
+    margin-top: 30px;
   .card {
     position: relative;
     width: 100%;
     height: 100%;
     border-radius: 8px;
     background-color: #ffffff;
-    margin-top: 30px;
     cursor: pointer;
     overflow: hidden;
     transform: translateY(0px);

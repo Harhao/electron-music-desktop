@@ -43,7 +43,7 @@ export default {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     .title {
       font-size: 22px;

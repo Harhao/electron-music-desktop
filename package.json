@@ -48,7 +48,7 @@
     "electron": "^2.0.4",
     "electron-debug": "^1.5.0",
     "electron-devtools-installer": "^2.2.4",
-    "electron-packager": "^12.1.0",
+    "electron-packager": "^14.1.1",
     "electron-rebuild": "^1.8.1",
     "mini-css-extract-plugin": "0.4.0",
     "file-loader": "^1.1.11",
