@@ -11,6 +11,9 @@
     <transition name="slide">
       <music-detail v-if="isShowDetail"></music-detail>
     </transition>
+    <transition name="slideIn">
+      <queue v-if="isShowRight"></queue>
+    </transition>
   </div>
 </template>
 
@@ -18,12 +21,14 @@
 import LeftSide from "@/layout/LeftSide.vue";
 import RightSide from "@/layout/RightSide.vue";
 import MusicDetail from "@/common/musicDetail.vue";
+import Queue from "@/common/queue.vue";
 export default {
   name: "index",
   components: {
     LeftSide,
     RightSide,
-    MusicDetail
+    MusicDetail,
+    Queue
   },
   methods: {
     data() {
@@ -33,6 +38,9 @@ export default {
   computed: {
     isShowDetail() {
       return this.$store.state.song.is_show_detail;
+    },
+    isShowRight() {
+      return this.$store.state.song.is_show_right;
     }
   },
   created() {
@@ -67,7 +75,17 @@ export default {
   transform: translateY(0);
   transition: transform 0.5s;
 }
-.slide-enter, .slide-leave-to {
+.slide-enter,
+.slide-leave-to {
   transform: translateY(100%);
+}
+.slideIn-enter-active,
+.slideIn-leave-active {
+  transform: translateX(0%);
+  transition: transform 0.5s;
+}
+.slideIn-enter,
+.slideIn-leave-to {
+  transform: translateX(30%);
 }
 </style>

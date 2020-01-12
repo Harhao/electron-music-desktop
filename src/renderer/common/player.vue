@@ -26,10 +26,15 @@
         </div>
       </div>
       <div class="control-tools tool-item">
-        <span class="el-icon-refresh"></span>
-        <span class="el-icon-refresh"></span>
+        <span class="refresh icon"></span>
+        <span class="prev icon"></span>
+        <span class="play"></span>
+        <span class="next icon"></span>
+        <span class="voice icon"></span>
       </div>
-      <div class="right-side-info tool-item"></div>
+      <div class="right-side-info tool-item">
+        <span class="music-queue icon" @click="showQueue"></span>
+      </div>
     </div>
   </div>
 </template>
@@ -47,6 +52,9 @@ export default {
   methods: {
     showDetail() {
       this.$store.dispatch("song/set_detail_show", true);
+    },
+    showQueue(){
+      this.$store.dispatch("song/set_right_show", true);
     }
   }
 };
@@ -92,6 +100,8 @@ export default {
     flex-direction: row;
     align-items: center;
     flex: 1;
+    box-sizing: border-box;
+    padding: 0 45px;
     .tool-item {
       flex: 1;
       height: 100%;
@@ -101,7 +111,6 @@ export default {
       flex-direction: row;
       align-items: center;
       box-sizing: border-box;
-      padding-left: 45px;
       & .album-picture {
         position: relative;
         width: 40px;
@@ -164,6 +173,61 @@ export default {
             cursor: pointer;
           }
         }
+      }
+    }
+    .control-tools {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      .icon {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .prev {
+        background-image: url("~@/assets/images/prev.png");
+      }
+      .play {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-image: url("~@/assets/images/play.png");
+      }
+      .next {
+        transform: rotate(180deg);
+        background-image: url("~@/assets/images/prev.png");
+      }
+      .refresh {
+        background-image: url("~@/assets/images/refresh.png");
+      }
+      .voice {
+        background-image: url("~@/assets/images/voice.png");
+      }
+    }
+    .right-side-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      .icon {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        -webkit-app-region:no-drag;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .music-queue {
+        background-image: url("~@/assets/images/rightBtn.png");
       }
     }
   }

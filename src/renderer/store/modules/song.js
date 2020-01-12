@@ -2,6 +2,7 @@ export default {
   namespaced: true,
   state: {
     is_show_detail: false,
+    is_show_right: false,
     song_detail_background: null,
     song_list: [],
     listen_history_list: []
@@ -21,11 +22,17 @@ export default {
     },
     show_detail(state, bool) {
       state.is_show_detail = bool;
+    },
+    show_right_queue(state,bool) {
+      state.is_show_right = bool;
     }
   },
   actions: {
     set_detail_show(context, bool) {
       context.commit('show_detail', bool);
+    },
+    set_right_show(context,bool) {
+      context.commit('show_right_queue',bool);
     }
   }
 };
