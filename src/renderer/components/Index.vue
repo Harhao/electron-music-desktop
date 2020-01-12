@@ -82,7 +82,7 @@ export default {
 .slideIn-enter-active,
 .slideIn-leave-active {
   transform: translateX(0%);
-  transition: transform 0.5s;
+  transition: transform 0.5s ease-in-out;
 }
 .slideIn-enter,
 .slideIn-leave-to {
