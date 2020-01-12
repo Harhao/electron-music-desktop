@@ -1,6 +1,8 @@
 export default {
   namespaced: true,
   state: {
+    is_show_detail: false,
+    song_detail_background: null,
     song_list: [],
     listen_history_list: []
   },
@@ -16,7 +18,14 @@ export default {
     },
     add_song_list(state, song) {
       state.song_list.push(song);
+    },
+    show_detail(state, bool) {
+      state.is_show_detail = bool;
     }
   },
-  actions: {}
+  actions: {
+    set_detail_show(context, bool) {
+      context.commit('show_detail', bool);
+    }
+  }
 };

@@ -8,29 +8,43 @@
         <right-side></right-side>
       </div>
     </main>
+    <transition name="slide">
+      <music-detail v-if="isShowDetail"></music-detail>
+    </transition>
   </div>
 </template>
 
 <script>
 import LeftSide from "@/layout/LeftSide.vue";
 import RightSide from "@/layout/RightSide.vue";
+import MusicDetail from "@/common/musicDetail.vue";
 export default {
   name: "index",
   components: {
     LeftSide,
-    RightSide
+    RightSide,
+    MusicDetail
   },
   methods: {
     data() {
       return {};
     }
+  },
+  computed: {
+    isShowDetail() {
+      return this.$store.state.song.is_show_detail;
+    }
+  },
+  created() {
+    this.$router.push({ path: "/music" });
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/variable.scss';
+@import "../assets/styles/variable.scss";
 #wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
   .main-container {
@@ -47,5 +61,13 @@ export default {
       flex: 4;
     }
   }
+}
+.slide-enter-active,
+.slide-leave-active {
+  transform: translateY(0);
+  transition: transform 0.5s;
+}
+.slide-enter, .slide-leave-to {
+  transform: translateY(100%);
 }
 </style>

@@ -1,12 +1,17 @@
 <template>
   <div class="player">
-
+    <el-button @click="showDetail">show</el-button>
   </div>
 </template>
 
 <script>
 export default {
-
+  name: "player",
+  methods: {
+    showDetail() {
+      this.$store.dispatch("song/set_detail_show",true)
+    }
+  }
 }
 </script>
 
