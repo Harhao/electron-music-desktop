@@ -2,7 +2,7 @@
 
 <script>
 export default {
-  name: "player:broadcast"
+  name: "broadcast"
 };
 </script>
 
