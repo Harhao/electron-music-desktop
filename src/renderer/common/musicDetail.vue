@@ -6,17 +6,44 @@
         <span class="icon el-icon-arrow-down" @click="closeDetail"></span>
       </div>
       <div class="right-side">
-        <span class="icon el-icon-minus" @click="operateWindow('window-cut')"></span>
+        <span
+          class="icon el-icon-minus"
+          @click="operateWindow('window-cut')"
+        ></span>
         <span class="icon el-icon-full-screen"></span>
-        <span class="icon el-icon-close" @click="operateWindow('window-close')"></span>
+        <span
+          class="icon el-icon-close"
+          @click="operateWindow('window-close')"
+        ></span>
       </div>
+    </div>
+    <div class="song-wrapper">
+      <div class="song-info">
+        <div class="pictures">
+          <img :src="demo" />
+        </div>
+        <div class="lyrics"></div>
+      </div>
+    </div>
+    <div class="control">
+      <player :isShowBackground="false" :isShowPicture="false"></player>
     </div>
   </div>
 </template>
 
 <script>
+import player from "./player.vue";
+import demo from "@/assets/images/demo.jpg";
 export default {
   name: "music-detail",
+  components: {
+    player
+  },
+  data() {
+    return {
+      demo
+    };
+  },
   methods: {
     operateWindow(operateName) {
       this.$electron.ipcRenderer.send(operateName);
@@ -35,12 +62,15 @@ export default {
 
 <style scoped lang="scss">
 .music-detail {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
-  z-index: 9999;
+  z-index: 999;
+  background: rgba($color: #000000, $alpha: 1);
   .mask {
     position: absolute;
     left: 0;
@@ -83,6 +113,32 @@ export default {
     .right-side {
       justify-content: flex-end;
     }
+  }
+  .song-wrapper {
+    flex: 1;
+    .song-info {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      height: 100%;
+      margin: 0 auto;
+      .pictures,
+      .lyrics {
+        flex: 1;
+      }
+      .pictures {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .control {
+    position: relative;
+    width: 90%;
+    height: 80px;
+    margin: 0 auto;
+    overflow: hidden;
   }
 }
 </style>

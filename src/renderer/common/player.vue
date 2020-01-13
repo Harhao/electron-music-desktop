@@ -1,11 +1,14 @@
 <template>
-  <div class="player">
+  <div class="player" :class="{ background: isShowBackground }">
     <div class="play-progress">
-      <div class="tool-bar" :style="{width:toolBarWidth}"></div>
-      <span class="dot"></span>
+      <el-slider
+        v-model="progress"
+        style="width: 100%;"
+        input-size="mini"
+      ></el-slider>
     </div>
     <div class="control-pane">
-      <div class="left-side-info tool-item">
+      <div class="left-side-info tool-item" v-if="isShowPicture">
         <div class="album-picture" @click="showDetail">
           <img :src="demo" />
           <div class="detail-arrow">
@@ -25,12 +28,25 @@
           </div>
         </div>
       </div>
+      <div class="left-side-info tool-item" v-if="!isShowPicture">
+        <div class="icon-group">
+          <span class="el-icon-download"></span>
+          <span class="el-icon-star-off"></span>
+          <span class="el-icon-chat-dot-round"></span>
+          <span class="el-icon-chat-line-square"></span>
+        </div>
+      </div>
       <div class="control-tools tool-item">
         <span class="refresh icon"></span>
         <span class="prev icon"></span>
         <span class="play"></span>
         <span class="next icon"></span>
-        <span class="voice icon"></span>
+        <el-dropdown placement="top">
+          <span class="voice icon"></span>
+          <el-dropdown-menu slot="dropdown">
+            <el-slider v-model="voulme" vertical height="100px" :min="0" :max="100"> </el-slider>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
       <div class="right-side-info tool-item">
         <span class="music-queue icon" @click="showQueue"></span>
@@ -46,14 +62,25 @@ export default {
   data() {
     return {
       demo,
-      toolBarWidth: 0
+      progress: 0,
+      voulme: 20
     };
+  },
+  props: {
+    isShowBackground: {
+      type: Boolean,
+      default: true
+    },
+    isShowPicture: {
+      type: Boolean,
+      default: true
+    }
   },
   methods: {
     showDetail() {
       this.$store.dispatch("song/set_detail_show", true);
     },
-    showQueue(){
+    showQueue() {
       this.$store.dispatch("song/set_right_show", true);
     }
   }
@@ -70,30 +97,16 @@ export default {
   height: 80px;
   bottom: 0;
   z-index: 99;
-  @include right_side_color;
   .play-progress {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 2px;
+    height: 3px;
     -webkit-app-region: no-drag;
     cursor: pointer;
     background-color: #dddddd;
     margin-top: 10px;
-    .tool-bar {
-      height: 2px;
-      background-color: #17d28d;
-    }
-    .dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      -webkit-app-region: no-drag;
-      background-color: #17d28d;
-    }
   }
   .control-pane {
     display: flex;
@@ -111,6 +124,18 @@ export default {
       flex-direction: row;
       align-items: center;
       box-sizing: border-box;
+      .icon-group {
+        & > span {
+          display: inline-block;
+          font-size: 24px;
+          margin-right: 8px;
+          font-weight: normal;
+          color: #ffffff;
+          &:hover {
+            color: #17d28d;
+          }
+        }
+      }
       & .album-picture {
         position: relative;
         width: 40px;
@@ -220,7 +245,7 @@ export default {
         display: inline-block;
         width: 25px;
         height: 25px;
-        -webkit-app-region:no-drag;
+        -webkit-app-region: no-drag;
         cursor: pointer;
         background-repeat: no-repeat;
         background-position: center;
@@ -231,5 +256,21 @@ export default {
       }
     }
   }
+}
+.background {
+  @include right_side_color;
+}
+/deep/ .el-slider__bar {
+  height: 3px;
+}
+/deep/ .el-slider__runway {
+  height: 3px;
+}
+/deep/ .el-slider__button {
+  width: 7px;
+  height: 7px;
+}
+/deep/ .el-slider__button-wrapper {
+  top: -17px;
 }
 </style>

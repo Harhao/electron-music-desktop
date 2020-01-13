@@ -44,7 +44,7 @@ export default {
     }
   },
   created() {
-    this.$router.push({ path: "/music" });
+    this.$router.push({ path: "/music" }).catch(err => {err});;
   }
 };
 </script>

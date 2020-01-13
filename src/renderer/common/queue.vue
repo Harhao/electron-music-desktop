@@ -1,12 +1,12 @@
 <template>
-  <div class="queue-wrapper" @click="clickOutSide">
-    <div class="right-side">
+  <div class="queue-wrapper" @click="clickOutSide" ref="queue">
+    <div class="right-side" ref="rightSide">
       <div class="top-header">
         <h3 class="title">播放队列</h3>
         <div class="song-count">
           <span class="count">10首歌曲</span>
           <span class="operate">
-            <i class="el-icon-s-unfold"></i>
+            <i class="el-icon-s-unfold" @click="close"></i>
             <i class="el-icon-delete"></i>
           </span>
         </div>
@@ -19,6 +19,11 @@
           </div>
           <div class="song-operate">
             <span class="time">04:39</span>
+            <div class="icon-group">
+              <span class="el-icon-video-play"></span>
+              <span class="el-icon-star-off"></span>
+              <span class="el-icon-chat-dot-round"></span>
+            </div>
           </div>
         </div>
         <div class="song">
@@ -28,6 +33,11 @@
           </div>
           <div class="song-operate">
             <span class="time">04:39</span>
+            <div class="icon-group">
+              <span class="el-icon-video-play"></span>
+              <span class="el-icon-star-off"></span>
+              <span class="el-icon-chat-dot-round"></span>
+            </div>
           </div>
         </div>
         <div class="song">
@@ -37,102 +47,19 @@
           </div>
           <div class="song-operate">
             <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
-          </div>
-        </div>
-        <div class="song">
-          <div class="song-info">
-            <span class="name">麻雀</span>
-            <span class="author">李荣浩</span>
-          </div>
-          <div class="song-operate">
-            <span class="time">04:39</span>
+            <div class="icon-group">
+              <span class="el-icon-video-play"></span>
+              <span class="el-icon-star-off"></span>
+              <span class="el-icon-chat-dot-round"></span>
+            </div>
           </div>
         </div>
       </div>
       <div class="bottom">
-        <span class="el-icon-right icon"></span>
-        <span class="babel">收起</span>
+        <span @click="close">
+          <span class="el-icon-right icon"></span>
+          <span class="babel">收起</span>
+        </span>
       </div>
     </div>
   </div>
@@ -144,9 +71,14 @@ export default {
     clickOutSide(e) {
       e.stopPropagation();
       e.preventDefault();
-      if (!Array.from(e.target.classList).includes("right-side")) {
+      const node = this.$refs.rightSide;
+      const parent = this.$refs.queue;
+      if (!node.contains(e.target) && parent.contains(e.target)) {
         this.$store.dispatch("song/set_right_show", false);
       }
+    },
+    close() {
+      this.$store.dispatch("song/set_right_show", false);
     }
   },
   computed: {
@@ -202,6 +134,10 @@ export default {
         }
         .operate {
           font-size: 18px;
+          & > i {
+            cursor: pointer;
+            -webkit-app-region: no-drag;
+          }
         }
       }
     }
@@ -223,6 +159,12 @@ export default {
         &:hover {
           @include right_side_color;
         }
+        &:hover .time {
+          display: none !important;
+        }
+        &:hover .icon-group {
+          display: flex !important;
+        }
         .song-info {
           height: 100%;
           display: flex;
@@ -240,6 +182,21 @@ export default {
         .song-operate {
           color: #dedede;
           font-size: 12px;
+          .time {
+            display: inline-block;
+          }
+          .icon-group {
+            display: none;
+            & > span {
+              display: inline-block;
+              font-size: 18px;
+              margin-right: 8px;
+              font-weight: normal;
+              &:hover {
+                color: #17d28d;
+              }
+            }
+          }
         }
       }
     }
@@ -258,6 +215,7 @@ export default {
       & .icon {
         color: #ffffff;
         font-size: 18px;
+        cursor: pointer;
       }
       .babel {
         font-size: 14px;
