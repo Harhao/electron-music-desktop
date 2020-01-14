@@ -84,7 +84,7 @@ export default new Router({
         },
         {
           path: "/broadcast",
-          name: "broacast",
+          name: "broadcast",
           component: require("@/components/Broadcast/index.vue").default
         },
         {
