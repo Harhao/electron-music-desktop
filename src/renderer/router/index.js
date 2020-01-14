@@ -85,7 +85,7 @@ export default new Router({
         {
           path: "/broadcast",
           name: "broadcast",
-          component: require("@/components/Broadcast/index.vue").default
+          component: require("@/components/BroadCast/index.vue").default
         },
         {
           path: "/download",
