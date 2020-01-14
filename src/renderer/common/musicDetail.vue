@@ -25,6 +25,9 @@
         <div class="lyrics"></div>
       </div>
     </div>
+    <div class="music-canvas">
+
+    </div>
     <div class="control">
       <player :isShowBackground="false" :isShowPicture="false"></player>
     </div>
@@ -132,6 +135,11 @@ export default {
         align-items: center;
       }
     }
+  }
+  .music-canvas {
+    width: 80%;
+    height: 60px;  
+    margin: 0 auto;
   }
   .control {
     position: relative;
