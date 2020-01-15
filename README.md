@@ -23,7 +23,7 @@ npm run build
 ```
 #### running result
 
-![demo](C:\Users\lvhuahao\Desktop\electron-music-desktop\screenshot\demo.gif)
+![demo](https://github.com/Harhao/electron-music-desktop/blob/master/screenshot/demo.gif)
 
 ## License
 
