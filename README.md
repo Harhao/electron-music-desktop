@@ -5,12 +5,12 @@
 ![electron](https://img.shields.io/badge/electron-2.0.4-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-brightgreen)
 > a desktop application develope on the electron-vue
-#### introduce
+## introduce
 
 The desktop application base on the electron and element-ui
 
 
-#### Build Setup
+## Build Setup
 
 ``` bash
 # install dependencies
@@ -23,7 +23,7 @@ npm run dev
 npm run build
 
 ```
-#### running result
+## running result
 
 ![demo](https://github.com/Harhao/electron-music-desktop/blob/master/screenshot/demo.gif)
 
