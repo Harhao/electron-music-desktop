@@ -1,7 +1,9 @@
 # electron-music-desktop
 
 ![https://travis-ci.org/Harhao/electron-music-desktop.svg?branch=master](https://travis-ci.org/Harhao/electron-music-desktop.svg?branch=master)
-![GitHub](https://img.shields.io/github/license/Harhao/electron-music-desktop)
+![Github](https://img.shields.io/badge/element--ui-2.13.0-brightgreen)
+![electron](https://img.shields.io/badge/electron-2.0.4-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-brightgreen)
 > a desktop application develope on the electron-vue
 #### introduce
 
