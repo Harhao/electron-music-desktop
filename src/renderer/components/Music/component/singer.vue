@@ -4,36 +4,7 @@
     <div class="search-group">
       <radio :data="groupList" @change="groupChange" />
       <div class="song-type">
-        <el-dropdown>
-          <span class="el-dropdown-link">
-            全部<i class="el-icon-arrow-down el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>流行</el-dropdown-item>
-            <el-dropdown-item>嘻哈</el-dropdown-item>
-            <el-dropdown-item>摇滚</el-dropdown-item>
-            <el-dropdown-item>电子</el-dropdown-item>
-            <el-dropdown-item>民谣</el-dropdown-item>
-            <el-dropdown-item>R&B</el-dropdown-item>
-            <el-dropdown-item>轻音乐</el-dropdown-item>
-            <el-dropdown-item>古典</el-dropdown-item>
-            <el-dropdown-item>爵士</el-dropdown-item>
-            <el-dropdown-item>乡村</el-dropdown-item>
-            <el-dropdown-item>蓝调</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-        <el-dropdown>
-          <span class="el-dropdown-link">
-            全部<i class="el-icon-arrow-down el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>黄金糕</el-dropdown-item>
-            <el-dropdown-item>狮子头</el-dropdown-item>
-            <el-dropdown-item>螺蛳粉</el-dropdown-item>
-            <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-            <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+        <drop-down :data="songType"></drop-down>
       </div>
     </div>
   </div>
@@ -41,10 +12,12 @@
 
 <script>
 import Radio from "@/common/Radio.vue";
+import DropDown from "@/common/dropDown.vue";
 export default {
   name: "singer",
   components: {
-    Radio
+    Radio,
+    DropDown
   },
   data() {
     return {
@@ -95,7 +68,11 @@ export default {
           id: 4,
           label: "组合"
         }
-      ]
+      ],
+      songType: [{
+        label:'全部',
+        value: 1
+      }]
     };
   },
   methods: {

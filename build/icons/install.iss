@@ -2,15 +2,15 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "electron-music-desktop"
-#define MyAppVersion "1.0"
-#define MyAppPublisher "My Company, Inc."
+#define MyAppVersion "1.0.0"
+#define MyAppPublisher "echo"
 #define MyAppURL "https://github.com/harhao"
 #define MyAppExeName "electron-music-desktop.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{076406AC-D549-4C77-8564-8FAD7458BE91}
+AppId={{C3925B72-6977-4DCF-8ACE-0AC0DD32FB29}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -22,9 +22,8 @@ DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\lvhuahao\Desktop
-OutputBaseFilename=mysetup
-SetupIconFile=C:\Users\lvhuahao\Desktop\electron-music-desktop\build\icons\icon.ico
+OutputBaseFilename=music
+SetupIconFile=C:\Users\Administrator\Desktop\electron-music-desktop\build\icons\icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -36,8 +35,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\lvhuahao\Desktop\electron-music-desktop\build\electron-music-desktop-win32-x64\electron-music-desktop.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\lvhuahao\Desktop\electron-music-desktop\build\electron-music-desktop-win32-x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\Administrator\Desktop\electron-music-desktop\build\electron-music-desktop-win32-x64\electron-music-desktop.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Desktop\electron-music-desktop\build\electron-music-desktop-win32-x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
