@@ -5,6 +5,7 @@
       <radio :data="groupList" @change="groupChange" />
       <div class="song-type">
         <drop-down :data="songType"></drop-down>
+        <drop-down :data="songType"></drop-down>
       </div>
     </div>
   </div>
@@ -69,10 +70,36 @@ export default {
           label: "组合"
         }
       ],
-      songType: [{
-        label:'全部',
-        value: 1
-      }]
+      songType: [
+        {
+          label: "全部",
+          value: 1
+        },
+        {
+          label: "华哥",
+          value: 2
+        },
+        {
+          label: "全部",
+          value: 3
+        },
+        {
+          label: "全部",
+          value: 4
+        },
+        {
+          label: "全部",
+          value: 5
+        },
+        {
+          label: "全部",
+          value: 6
+        },
+        {
+          label: "全部",
+          value: 7
+        },
+      ]
     };
   },
   methods: {
@@ -96,6 +123,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       width: 150px;
+      margin-right: 20px;
     }
   }
 }
