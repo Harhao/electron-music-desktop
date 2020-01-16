@@ -1,14 +1,16 @@
 # electron-music-desktop
 
 ![https://travis-ci.org/Harhao/electron-music-desktop.svg?branch=master](https://travis-ci.org/Harhao/electron-music-desktop.svg?branch=master)
-
+![Github](https://img.shields.io/badge/element--ui-2.13.0-brightgreen)
+![electron](https://img.shields.io/badge/electron-2.0.4-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-brightgreen)
 > a desktop application develope on the electron-vue
-#### introduce
+## introduce
 
 The desktop application base on the electron and element-ui
 
 
-#### Build Setup
+## Build Setup
 
 ``` bash
 # install dependencies
@@ -21,10 +23,10 @@ npm run dev
 npm run build
 
 ```
-#### running result
+## running result
 
-![demo](C:\Users\lvhuahao\Desktop\electron-music-desktop\screenshot\demo.gif)
+![demo](https://github.com/Harhao/electron-music-desktop/blob/master/screenshot/demo.gif)
 
 ## License
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)
