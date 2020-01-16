@@ -1,5 +1,9 @@
 <template>
-  <div class="drop-down" v-clickoutside="handleClick">
+  <div
+    class="drop-down"
+    v-clickoutside="handleClick"
+    :style="{ width: width + 'px' }"
+  >
     <div class="drop-select" @click="show = !show">
       <span class="label" v-if="data.length">{{
         getLabelById(selectValue)
@@ -11,7 +15,6 @@
     </div>
     <transition name="fade">
       <ul class="drop-list" v-if="show">
-        <span class="tangle"></span>
         <li
           class="drop-item"
           v-for="item in data"
@@ -34,6 +37,10 @@ export default {
       default() {
         return [];
       }
+    },
+    width: {
+      type: Number,
+      default: 90
     }
   },
   data() {
@@ -59,7 +66,13 @@ export default {
         );
       }
       return "";
+    },
+    init() {
+      this.selectValue = this.data.length && this.data[0]["value"];
     }
+  },
+  mounted() {
+    this.init();
   }
 };
 </script>
@@ -68,11 +81,11 @@ export default {
 @import "../assets/styles/variable.scss";
 .drop-down {
   position: relative;
-  width: 70px;
   height: 30px;
   color: #ffffff;
   cursor: pointer;
   & .drop-select {
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
@@ -81,28 +94,21 @@ export default {
     .label {
       flex: 1;
       text-align: center;
-      font-family: "source-beauty-light";
+      font-size: 12px;
+      font-family: "source-beauty";
+      color: #a0a0a0;
     }
   }
-  & .drop-list {
-    .tangle {
-      position: absolute;
-      top: -12px;
-      left: 38%;
-      content: "";
-      width: 0;
-      height: 0;
-      border: 7px solid transparent;
-      border-bottom: 7px solid #ffffff;
-    }
+  & .drop-list { 
     width: 100%;
     height: 150px;
     overflow-y: scroll;
     position: absolute;
     border-radius: 8px;
-    border: 1px solid #312f2f;
-    @include new_window_color;
+    box-shadow: 1px 5px 19px #2f2f2f;
+    background-color: #101010;
     top: 30px;
+    z-index: 10;
     .drop-item {
       list-style: none;
       width: 100%;
@@ -110,8 +116,12 @@ export default {
       line-height: 25px;
       text-align: center;
       color: #ffffff;
-      font-size: 14px;
+      font-size: 12px;
       font-family: "source-beauty-light";
+      padding: 5px 0;
+      &:hover {
+        color: #17d28d;
+      }
     }
   }
 }

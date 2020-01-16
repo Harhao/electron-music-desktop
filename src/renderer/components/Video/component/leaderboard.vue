@@ -1,10 +1,12 @@
 <template>
   <div class="leaderboard">
     <div class="header">
-      <img :src="demo" class="banner"/>
+      <img :src="demo" class="banner" />
       <div class="desc-wrapper">
         <div class="title">巅峰榜·MV</div>
-        <div class="select-wrapper"></div>
+        <div class="select-wrapper">
+          <drop-down :data="dateList" :width="100"></drop-down>
+        </div>
       </div>
     </div>
     <el-tabs v-model="activeName" @tab-click="handleClick" class="tab-wrapper">
@@ -23,10 +25,12 @@
 <script>
 import demo from "@/assets/images/demo.jpg";
 import rankList from "@/common/rankList.vue";
+import DropDown from "@/common/dropDown.vue";
 export default {
   name: "leaderboard",
   components: {
-    rankList
+    rankList,
+    DropDown
   },
   data() {
     return {
@@ -82,7 +86,17 @@ export default {
           name: "hello",
           author: "具荷拉",
           time: "2019-09-10"
+        }
+      ],
+      dateList: [
+        {
+          label: "01.01-01.06",
+          value: 1
         },
+        {
+          label: "12.10-12.30",
+          value: 2
+        }
       ]
     };
   },
@@ -110,7 +124,7 @@ export default {
       .title {
         font-weight: bold;
         font-size: 24px;
-        font-family: 'source-beauty';
+        font-family: "source-beauty";
         color: #ffffff;
       }
     }

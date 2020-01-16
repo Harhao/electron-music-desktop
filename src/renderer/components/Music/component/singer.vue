@@ -76,29 +76,53 @@ export default {
           value: 1
         },
         {
-          label: "华哥",
+          label: "流行",
           value: 2
         },
         {
-          label: "全部",
+          label: "嘻哈",
           value: 3
         },
         {
-          label: "全部",
+          label: "摇滚",
           value: 4
         },
         {
-          label: "全部",
+          label: "电子",
           value: 5
         },
         {
-          label: "全部",
+          label: "民谣",
           value: 6
         },
         {
-          label: "全部",
+          label: "R&B",
           value: 7
         },
+        {
+          label: "民歌",
+          value: 8
+        },
+        {
+          label: "轻音乐",
+          value: 9
+        },
+        {
+          label: "爵士",
+          value: 10
+        },
+        {
+          label: "古典",
+          value: 11
+        },
+        {
+          label: "乡村",
+          value: 12
+        },
+        {
+          label: "蓝调",
+          value: 13
+        }
       ]
     };
   },
