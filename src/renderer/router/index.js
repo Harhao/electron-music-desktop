@@ -90,7 +90,33 @@ export default new Router({
         {
           path: "/download",
           name: "download",
-          component: require("@/components/Download/index.vue").default
+          component: require("@/components/Download/index.vue").default,
+          children:[
+            {
+              path: "localsong",
+              name: "localsong",
+              component: require("@/components/Download/component/localsong.vue")
+                .default
+            },
+            {
+              path: "downloadsong",
+              name: "downloadsong",
+              component: require("@/components/Download/component/downloadsong.vue")
+                .default
+            },
+            {
+              path: "downloadvideo",
+              name: "downloadvideo",
+              component: require("@/components/Download/component/downloadvideo.vue")
+                .default
+            },
+            {
+              path: "pending",
+              name: "pending",
+              component: require("@/components/Download/component/pending.vue")
+                .default
+            }
+          ]
         },
         {
           path: "/history",
