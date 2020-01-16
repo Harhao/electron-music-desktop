@@ -8,17 +8,27 @@
         <drop-down :data="songType"></drop-down>
       </div>
     </div>
+    <div class="singer-list">
+      <singer-card
+        v-for="(item, index) in singerList"
+        :key="index"
+        :index="index + 1"
+        :data="item"
+      ></singer-card>
+    </div>
   </div>
 </template>
 
 <script>
 import Radio from "@/common/Radio.vue";
+import singerCard from "@/common/singerCard.vue";
 import DropDown from "@/common/dropDown.vue";
 export default {
   name: "singer",
   components: {
     Radio,
-    DropDown
+    DropDown,
+    singerCard
   },
   data() {
     return {
@@ -123,6 +133,32 @@ export default {
           label: "蓝调",
           value: 13
         }
+      ],
+      singerList: [
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        }
       ]
     };
   },
@@ -149,6 +185,14 @@ export default {
       width: 150px;
       margin-right: 20px;
     }
+  }
+  .singer-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
   }
 }
 </style>
