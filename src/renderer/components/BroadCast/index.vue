@@ -81,10 +81,11 @@ export default {
     width: 300px;
     height: 150px;
     padding: 0 15px;
+    margin-top: 25px;
     color: #ffffff;
     font-family: "source-beauty-light";
     background: linear-gradient(to right, rgb(0, 15, 25), rgb(0, 21, 34));
-    border-radius: 5px;
+    border-radius: 8px;
     & > img {
       width: 138px;
       height: 122px;
@@ -107,8 +108,12 @@ export default {
         flex-direction: row;
         justify-content: center;
         margin-top: 10px;
+        .icon {
+          margin-right: 10px;
+        }
         .icon:hover {
           color: #17d28d;
+          cursor: pointer;
         }
       }
     }

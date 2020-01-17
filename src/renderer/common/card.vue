@@ -32,11 +32,11 @@ export default {
   props: {
     width: {
       type: Number|String,
-      default: 160
+      default: 170
     },
     height: {
       type: Number|String,
-      default: 160
+      default: 170
     },
     showIcon: {
       type: Boolean,

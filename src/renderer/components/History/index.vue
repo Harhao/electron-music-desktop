@@ -2,7 +2,7 @@
 
 <script>
 export default {
-  name: "player:history"
+  name: "history"
 };
 </script>
 

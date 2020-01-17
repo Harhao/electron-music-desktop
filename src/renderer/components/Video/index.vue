@@ -7,7 +7,7 @@
 <script>
 import tab from "@/common/tab.vue";
 export default {
-  name: "player:video",
+  name: "video",
   components: {
     tab
   },
