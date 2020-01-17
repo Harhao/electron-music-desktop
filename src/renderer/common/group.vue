@@ -36,9 +36,9 @@ export default {
 .group-wrapper {
   width: 100%;
   box-sizing: border-box;
-  // height: 300px;
   height: auto;
-  font-family: 'source-beauty';
+  margin-top: 20px;
+  font-family: "source-beauty";
   .header {
     width: 100%;
     box-sizing: border-box;
