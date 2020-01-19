@@ -30,13 +30,16 @@
       <audio
         id="audio"
         controls
-        src="http://183.47.253.143/amobile.music.tc.qq.com/C4000017BpKU1Sb8CL.m4a?guid=3534427900&vkey=86CBF0CEFF3FAF2C2C699715B9BDBF45152DDD1BF5B1757EB07718BFC5374D4F05EE11F6844CE93046F85AB0B9B7D1694A7F33A7EF0349FB&uin=0&fromtag=66"
+        src="http://183.60.131.112/amobile.music.tc.qq.com/C400004dmA9q3YPzz0.m4a?guid=3534427900&vkey=F4D759568A66DF35A9D6715AB61C8F33C896BD75039F4EAD33A1E50C4593CD38CCD4C735754354E48890758B0A4E3E66F0F1F10D33A98BD5&uin=0&fromtag=66"
         crossOrigin="anonymous"
       ></audio>
-      <a href="javascript:;" id="play-btn" @click="play">PLAY</a>
     </div>
     <div class="control">
-      <player :isShowBackground="false" :isShowPicture="false"></player>
+      <player
+        :isShowBackground="false"
+        :isShowPicture="false"
+        @play="play"
+      ></player>
     </div>
   </div>
 </template>
@@ -63,20 +66,20 @@ export default {
       this.$store.dispatch("song/set_detail_show", false);
     },
     play() {
-      const btn = document.getElementById("play-btn");
       const audio = document.getElementById("audio");
-      btn.style.display = "none";
       audio.play();
       this.onLoadAudio(audio);
     },
     onLoadAudio(audio) {
-      var context = new (window.AudioContext || window.webkitAudioContext)();
-      var analyser = context.createAnalyser();
+      if (!this.context) {
+        this.context = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      var analyser = this.context.createAnalyser();
       analyser.fftSize = 1024;
-      var source = context.createMediaElementSource(audio);
+      var source = this.context.createMediaElementSource(audio);
 
       source.connect(analyser);
-      analyser.connect(context.destination);
+      analyser.connect(this.context.destination);
 
       var bufferLength = analyser.frequencyBinCount;
       var dataArray = new Uint8Array(bufferLength);
@@ -95,9 +98,9 @@ export default {
         ctx.clearRect(0, 0, WIDTH, HEIGHT);
         for (var i = 0, x = 0; i < bufferLength; i++) {
           barHeight = dataArray[i];
-          var r = barHeight + 300 * (i / bufferLength);
-          var g = 250 * (i / bufferLength);
-          var b = 255;
+          var r = barHeight + 125 * (i / bufferLength);
+          var g = 400 * (i / bufferLength);
+          var b = 250;
           ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
           ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
           x += barWidth + 2;
@@ -110,6 +113,9 @@ export default {
     background() {
       return this.$store.state.song.song_detail_background;
     }
+  },
+  destroyed() {
+    this.context && this.context.close();
   }
 };
 </script>

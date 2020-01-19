@@ -39,12 +39,20 @@
       <div class="control-tools tool-item">
         <span class="refresh icon"></span>
         <span class="prev icon"></span>
-        <span class="play"></span>
+        <span class="play" @click="play" v-if="isPause"></span>
+        <span class="pause" v-else></span>
         <span class="next icon"></span>
         <el-dropdown placement="top">
           <span class="voice icon"></span>
           <el-dropdown-menu slot="dropdown">
-            <el-slider v-model="voulme" vertical height="100px" :min="0" :max="100"> </el-slider>
+            <el-slider
+              v-model="voulme"
+              vertical
+              height="100px"
+              :min="0"
+              :max="100"
+            >
+            </el-slider>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -63,7 +71,8 @@ export default {
     return {
       demo,
       progress: 0,
-      voulme: 20
+      voulme: 20,
+      isPause: true
     };
   },
   props: {
@@ -82,6 +91,10 @@ export default {
     },
     showQueue() {
       this.$store.dispatch("song/set_right_show", true);
+    },
+    play() {
+      this.isPause = false;
+      this.$emit("play");
     }
   }
 };
@@ -216,14 +229,20 @@ export default {
       .prev {
         background-image: url("~@/assets/images/prev.png");
       }
-      .play {
+      .play,
+      .pause {
         display: inline-block;
         width: 40px;
         height: 40px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+      }
+      .play {
         background-image: url("~@/assets/images/play.png");
+      }
+      .pause {
+        background-image: url("~@/assets/images/pause.png");
       }
       .next {
         transform: rotate(180deg);
