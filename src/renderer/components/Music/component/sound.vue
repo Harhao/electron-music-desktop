@@ -27,9 +27,39 @@
       </div>
     </group>
     <group title="推荐节目">
-      <h4>歌曲</h4>
+      <h4 class="sub-title">歌曲</h4>
       <div class="song-list">
         <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+      </div>
+    </group>
+    <group title="节目排行榜">
+      <h4 class="sub-title">歌曲</h4>
+      <div class="song-list">
+        <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+        <song></song>
+      </div>
+    </group>
+    <group title="人气主播">
+      <div class="singer-list">
+        <singer-card
+          v-for="(item, index) in singerList"
+          :key="index"
+          :index="index + 1"
+          :data="item"
+        ></singer-card>
       </div>
     </group>
   </div>
@@ -39,12 +69,14 @@
 import group from "@/common/group";
 import card from "@/common/card";
 import song from "@/common/song";
+import singerCard from "@/common/singerCard.vue";
 export default {
   name: "sound",
   components: {
     group,
     card,
-    song
+    song,
+    singerCard
   },
   data() {
     return {
@@ -98,6 +130,20 @@ export default {
           value: 12
         }
       ],
+      singerList: [
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        },
+        {
+          name: "周杰伦"
+        }
+      ],
       activeName: "new"
     };
   }
@@ -137,6 +183,24 @@ export default {
         filter: brightness(0.8);
       }
     }
+  }
+  .sub-title {
+    color: #9c9696;
+    font-size: 12px;
+    padding: 10px 0;
+  }
+  .song-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .singer-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
   }
   .tab {
     margin-left: 20px;
