@@ -30,7 +30,7 @@
       <audio
         id="audio"
         controls
-        src="http://183.60.131.112/amobile.music.tc.qq.com/C400004dmA9q3YPzz0.m4a?guid=3534427900&vkey=F4D759568A66DF35A9D6715AB61C8F33C896BD75039F4EAD33A1E50C4593CD38CCD4C735754354E48890758B0A4E3E66F0F1F10D33A98BD5&uin=0&fromtag=66"
+        src="http://ws.stream.qqmusic.qq.com/C400001H6VZd0OTZPl.m4a?guid=1715320592&vkey=57F80F0D5144BC595CDD9EBBD4D5AD6CEDA4A450329BF76E4918165CC32C3F609C55CE82BC68307D9DCF4ABE57C41F1314D99BCCBC0671EC&uin=0&fromtag=66"
         crossOrigin="anonymous"
       ></audio>
     </div>
@@ -74,33 +74,33 @@ export default {
       if (!this.context) {
         this.context = new (window.AudioContext || window.webkitAudioContext)();
       }
-      var analyser = this.context.createAnalyser();
+      let analyser = this.context.createAnalyser();
       analyser.fftSize = 1024;
-      var source = this.context.createMediaElementSource(audio);
+      let source = this.context.createMediaElementSource(audio);
 
       source.connect(analyser);
       analyser.connect(this.context.destination);
 
-      var bufferLength = analyser.frequencyBinCount;
-      var dataArray = new Uint8Array(bufferLength);
+      let bufferLength = analyser.frequencyBinCount;
+      let dataArray = new Uint8Array(bufferLength);
 
       let canvas = document.getElementById("canvas");
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      var ctx = canvas.getContext("2d");
-      var WIDTH = canvas.width;
-      var HEIGHT = canvas.height;
-      var barWidth = (WIDTH / bufferLength) * 1.5;
-      var barHeight;
+      let ctx = canvas.getContext("2d");
+      let WIDTH = canvas.width;
+      let HEIGHT = canvas.height;
+      let barWidth = (WIDTH / bufferLength) * 1.5;
+      let barHeight;
       function renderFrame() {
         requestAnimationFrame(renderFrame);
         analyser.getByteFrequencyData(dataArray);
         ctx.clearRect(0, 0, WIDTH, HEIGHT);
-        for (var i = 0, x = 0; i < bufferLength; i++) {
+        for (let i = 0, x = 0; i < bufferLength; i++) {
           barHeight = dataArray[i];
-          var r = barHeight + 125 * (i / bufferLength);
-          var g = 400 * (i / bufferLength);
-          var b = 250;
+          let r = barHeight + 125 * (i / bufferLength);
+          let g = 400 * (i / bufferLength);
+          let b = 250;
           ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
           ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
           x += barWidth + 2;
