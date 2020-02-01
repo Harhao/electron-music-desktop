@@ -1,9 +1,26 @@
-<template> </template>
+<template>
+  <div class="listen-wrapper">
+    <blank></blank>
+  </div>
+</template>
 
 <script>
+import blank from "@/common/blankTips.vue";
 export default {
-  name: "player:listen"
+  name: "listen",
+  components: {
+    blank
+  }
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.listen-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
