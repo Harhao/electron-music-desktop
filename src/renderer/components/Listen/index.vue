@@ -1,6 +1,7 @@
 <template>
   <div class="listen-wrapper">
-    <blank></blank>
+    <blank :tips="tips" :route="route">
+    </blank>
   </div>
 </template>
 
@@ -10,6 +11,15 @@ export default {
   name: "listen",
   components: {
     blank
+  },
+  data() {
+    return {
+      tips: '没有试听记录',
+      route: {
+        name: '/music',
+        content: '去音乐馆看看'
+      }
+    }
   }
 };
 </script>

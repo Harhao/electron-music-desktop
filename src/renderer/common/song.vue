@@ -3,7 +3,7 @@
     <div class="song-info">
       <span class="like"></span>
       <div class="song-detail">
-        <img :src="demo" class="poster" />
+        <img :src="demo" class="poster" v-if="showImg"/>
         <div class="song-text">
           <div class="song-title">
             <span>古风情话 | 心中藏你，何日忘你</span>
@@ -31,6 +31,12 @@ export default {
     return {
       demo
     };
+  },
+  props: {
+    showImg: {
+      type: Boolean,
+      default: true
+    }
   }
 };
 </script>

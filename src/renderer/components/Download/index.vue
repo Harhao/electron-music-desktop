@@ -1,6 +1,6 @@
 <template>
   <div class="download">
-    <tab :data="tabData" ref="tabWrapper"/>
+    <tab :data="tabData" ref="tabWrapper" />
   </div>
 </template>
 
@@ -40,4 +40,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.download {
+  width: 100%;
+  height: 100%;
+}
 </style>
