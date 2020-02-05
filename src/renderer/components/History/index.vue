@@ -3,8 +3,8 @@
     <h3 class="title">播放历史</h3>
     <div class="table-data">
       <span class="total">共150首</span>
-      <el-table :data="tableData" class="table-list" :row-class-name="rowClass">
-        <el-table-column label="歌曲" align="center" width="200px">
+      <el-table :data="tableData" class="table-list" :cell-style="cellStyle" :header-cell-style="headerStyle">
+        <el-table-column label="歌曲" align="center" width="400px">
           <template slot-scope="scope">
             <song :showImg="false"></song>
           </template>
@@ -26,27 +26,39 @@ export default {
     return {
       tableData: [
         {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
+          singer: "王小虎",
+          album: "流年似水"
         },
         {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
+          singer: "王小虎",
+          album: "流年似水"
         },
         {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
+          singer: "王小虎",
+          album: "流年似水"
         },
         {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
+          singer: "王小虎",
+          album: "流年似水"
         }
       ]
     };
+  },
+  methods: {
+    headerStyle({row, rowIndex }) {
+      const theme = document.getElementById('app').getAttribute('data-theme')
+      switch(theme) {
+        case 'black': return {background: 'rgb(30, 30, 32)'}
+        case 'grey': return {background: 'rgb(82, 82, 82)'}
+      }
+    },
+    cellStyle({row, column, rowIndex, columnIndex}) {
+      const theme = document.getElementById('app').getAttribute('data-theme')
+      switch(theme) {
+        case 'black': return {background: 'rgb(30, 30, 32)'}
+        case 'grey': return {background: 'rgb(82, 82, 82)'}
+      }
+    }
   }
 };
 </script>
@@ -68,10 +80,21 @@ export default {
   }
   .table-data {
     width: 100%;
+    box-sizing: border-box;
     min-height: 500px;
     padding-top: 50px;
-    .rowClass{
-      @include right_side_color;
+    .total {
+      display: inline-block;
+      color: #ddd;
+      margin-bottom: 20px;
+
+    }
+    /deep/ .el-table__row>td{
+      border: none;
+      color: #ffffff;
+    }
+    /deep/.el-table::before {
+      height: 0px;
     }
   }
 }

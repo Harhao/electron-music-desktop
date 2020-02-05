@@ -92,6 +92,7 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: flex-start;
         color: #ffffff;
         font-size: 14px;
         font-family: "source-beauty-light";
