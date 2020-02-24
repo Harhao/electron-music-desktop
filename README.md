@@ -25,14 +25,14 @@ npm run build
 ```
 ## 运行结果
 
-![demo](https://github.com/Harhao/electron-music-desktop/blob/master/screenshot/demo.gif)
+![运行结果](https://github.com/Harhao/electron-music-desktop/blob/master/screenshot/result.gif)
 
 ## 实现功能
 - :sparkles: 完成音乐播放音频可视化功能
-- **:lipstick:**音乐播放端换肤功能
-- **:art:**音乐播放历史侧边栏功能
-- **:rocket:** 自定义下拉列表功能
-- **:tada:**基于`vue-router`多窗口登录功能
+- :lipstick:音乐播放端换肤功能
+- :art:音乐播放历史侧边栏功能
+- :rocket: 自定义下拉列表功能
+- :tada:基于`vue-router`多窗口登录功能
 
 
 ## License
