@@ -9,7 +9,7 @@
         :cell-style="cellStyle"
         :header-cell-style="headerStyle"
       >
-        <el-table-column label="歌曲" align="center" width="400px">
+        <el-table-column label="歌曲" width="400px">
           <template slot-scope="scope">
             <song :showImg="false"></song>
           </template>

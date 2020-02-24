@@ -28,7 +28,7 @@ function createWindow() {
     resizable: false,
     webPreferences: {
       nodeIntegration: true,
-      webSecurity: false
+      webSecurity: false,
     }
   });
 
@@ -75,7 +75,7 @@ ipcMain.on("createLoginWindow", () => {
     parent: mainWindow,
     useContentSize: true,
     webPreferences: {
-      webSecurity: false,
+      webSecurity: true,
       devTools: false
     }
   });
